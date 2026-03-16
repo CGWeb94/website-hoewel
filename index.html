@@ -216,54 +216,6 @@
     /* ── SCROLL BOUNCE ───────────────────────────────────── */
     @keyframes scrollBounce { 0%,100%{opacity:.5;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.15)} }
 
-    /* ── STYLE SWITCHER ──────────────────────────────────── */
-    #style-toggle {
-      position:fixed;bottom:28px;right:28px;z-index:9000;
-      width:52px;height:52px;border-radius:50%;
-      background:var(--cp);border:2px solid rgba(255,255,255,0.15);
-      box-shadow:0 8px 32px rgba(0,0,0,0.35);
-      cursor:pointer;display:flex;align-items:center;justify-content:center;
-      transition:transform 0.2s,box-shadow 0.2s;
-    }
-    #style-toggle:hover { transform:scale(1.1);box-shadow:0 12px 40px rgba(0,0,0,0.45); }
-
-    #style-panel {
-      position:fixed;bottom:92px;right:28px;z-index:8999;
-      background:#fff;border-radius:16px;padding:24px;
-      box-shadow:0 24px 80px rgba(0,0,0,0.2),0 4px 16px rgba(0,0,0,0.1);
-      width:300px;
-      transform:translateY(16px) scale(0.95);opacity:0;pointer-events:none;
-      transition:transform 0.25s cubic-bezier(.34,1.56,.64,1),opacity 0.2s;
-    }
-    #style-panel.open { transform:translateY(0) scale(1);opacity:1;pointer-events:all; }
-
-    .sp-label { font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3af;margin-bottom:10px;display:block; }
-    .sp-title { font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:#111;margin-bottom:20px; }
-
-    .color-swatches { display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px; }
-    .swatch {
-      position:relative;height:44px;border-radius:8px;cursor:pointer;overflow:hidden;
-      box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:transform 0.15s,box-shadow 0.15s;
-      border:2px solid transparent;
-    }
-    .swatch:hover { transform:scale(1.07);box-shadow:0 4px 16px rgba(0,0,0,0.2); }
-    .swatch.active { border-color:#111;transform:scale(1.07); }
-    .swatch-top    { position:absolute;top:0;left:0;right:0;bottom:50%; }
-    .swatch-bottom { position:absolute;bottom:0;left:0;right:0;top:50%; }
-    .swatch-name   { position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;font-family:'Inter',sans-serif;font-size:0.55rem;font-weight:600;color:rgba(255,255,255,0.9);text-align:center;text-shadow:0 1px 2px rgba(0,0,0,0.5); }
-
-    .font-list { display:flex;flex-direction:column;gap:4px; }
-    .font-btn {
-      padding:8px 12px;border-radius:6px;cursor:pointer;border:1.5px solid transparent;
-      background:#f8f8f8;transition:all 0.15s;text-align:left;width:100%;
-    }
-    .font-btn:hover { background:#f0f0f0;border-color:#d0d0d0; }
-    .font-btn.active { background:rgba(var(--ca-rgb),0.08);border-color:var(--ca); }
-    .font-btn-name  { font-size:0.8125rem;font-weight:600;color:#333;display:block;margin-bottom:1px; }
-    .font-btn-preview { font-size:0.75rem;color:#888;display:block; }
-
-    .sp-divider { height:1px;background:#f0f0f0;margin:16px 0; }
-
     /* ── UTIL ────────────────────────────────────────────── */
     .reveal { will-change:transform; }
   </style>
@@ -887,29 +839,127 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════ STYLE SWITCHER ════════════════════════════ -->
-<button id="style-toggle" aria-label="Design-Varianten" title="Design anpassen">
-  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-  </svg>
-</button>
+<!-- DESIGN SWITCHER (temporär – zum Testen) -->
+<style>
+  #ts-wrap { position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Inter',system-ui,sans-serif; }
+  #ts-btn {
+    width:52px;height:52px;border-radius:50%;background:#111;
+    border:2px solid rgba(255,255,255,0.18);
+    box-shadow:0 8px 32px rgba(0,0,0,0.35);
+    cursor:pointer;font-size:1.35rem;display:flex;align-items:center;justify-content:center;
+    transition:transform 0.2s,box-shadow 0.2s;
+  }
+  #ts-btn:hover { transform:scale(1.1);box-shadow:0 12px 40px rgba(0,0,0,0.5); }
+  #ts-panel {
+    position:absolute;bottom:64px;right:0;width:328px;
+    background:#fff;border-radius:18px;overflow:hidden;
+    box-shadow:0 28px 80px rgba(0,0,0,0.18),0 4px 20px rgba(0,0,0,0.1);
+    transform:translateY(18px) scale(0.95);opacity:0;pointer-events:none;
+    transition:transform 0.28s cubic-bezier(.34,1.56,.64,1),opacity 0.2s;
+  }
+  #ts-panel.open { transform:translateY(0) scale(1);opacity:1;pointer-events:all; }
+  .ts-header {
+    display:flex;align-items:center;justify-content:space-between;
+    padding:15px 18px;border-bottom:1px solid #f0f0f0;
+  }
+  .ts-title { font-size:0.8125rem;font-weight:700;color:#111;letter-spacing:0.01em; }
+  .ts-close { border:none;background:none;cursor:pointer;color:#aaa;font-size:1.1rem;line-height:1;padding:4px;transition:color 0.15s; }
+  .ts-close:hover { color:#333; }
+  .ts-tabs { display:flex;border-bottom:1px solid #f0f0f0; }
+  .ts-tab {
+    flex:1;padding:10px 12px;border:none;background:none;cursor:pointer;
+    font-size:0.7rem;font-weight:700;color:#aaa;letter-spacing:0.08em;text-transform:uppercase;
+    border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.15s,border-color 0.15s;
+  }
+  .ts-tab.active { color:#111;border-bottom-color:#111; }
+  .ts-body { padding:16px 18px 20px;max-height:430px;overflow-y:auto; }
+  .ts-pane { display:none; }
+  .ts-pane.active { display:block; }
+  .ts-lbl {
+    font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+    color:#bbb;margin-bottom:10px;display:block;margin-top:16px;
+  }
+  .ts-lbl:first-child { margin-top:0; }
+  /* 4-col swatch grid */
+  .ts-swatches { display:grid;grid-template-columns:repeat(4,1fr);gap:7px; }
+  .ts-swatch {
+    aspect-ratio:1;border-radius:10px;cursor:pointer;overflow:hidden;position:relative;
+    box-shadow:0 2px 8px rgba(0,0,0,0.13);border:2.5px solid transparent;
+    transition:transform 0.15s,box-shadow 0.15s;
+  }
+  .ts-swatch:hover { transform:scale(1.09);box-shadow:0 5px 16px rgba(0,0,0,0.22); }
+  .ts-swatch.active { border-color:#111;box-shadow:0 0 0 3px rgba(0,0,0,0.14),0 5px 16px rgba(0,0,0,0.22); }
+  .ts-sw-top  { position:absolute;top:0;left:0;right:0;height:54%; }
+  .ts-sw-bot  { position:absolute;bottom:0;left:0;right:0;height:46%; }
+  .ts-sw-name { position:absolute;bottom:3px;left:0;right:0;text-align:center;font-size:0.48rem;font-weight:700;color:rgba(255,255,255,0.95);text-shadow:0 1px 3px rgba(0,0,0,0.55);pointer-events:none; }
+  /* Custom pickers */
+  .ts-pickers { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px; }
+  .ts-pick-wrap { display:flex;flex-direction:column;gap:5px; }
+  .ts-pick-lbl { font-size:0.68rem;font-weight:600;color:#888; }
+  .ts-pick-row { display:flex;align-items:center;gap:7px; }
+  .ts-pick-row input[type="color"] {
+    width:34px;height:34px;border:none;background:none;cursor:pointer;
+    border-radius:7px;padding:2px;flex-shrink:0;
+  }
+  .ts-pick-row input[type="text"] {
+    flex:1;height:34px;border:1.5px solid #e8e8e8;border-radius:7px;
+    font-size:0.72rem;padding:0 8px;font-family:monospace;color:#333;
+    transition:border-color 0.15s;
+  }
+  .ts-pick-row input[type="text"]:focus { outline:none;border-color:#888; }
+  /* Font list */
+  .ts-fonts { display:flex;flex-direction:column;gap:5px; }
+  .ts-font-btn {
+    padding:9px 12px;border-radius:8px;cursor:pointer;
+    border:1.5px solid #efefef;background:#fafafa;
+    transition:all 0.15s;text-align:left;width:100%;
+  }
+  .ts-font-btn:hover { background:#f0f0f0;border-color:#ddd; }
+  .ts-font-btn.active { background:#111;border-color:#111; }
+  .ts-font-btn.active .ts-fn { color:#fff; }
+  .ts-font-btn.active .ts-fp { color:rgba(255,255,255,0.55); }
+  .ts-fn { display:block;font-size:0.875rem;font-weight:600;color:#222;margin-bottom:1px; }
+  .ts-fp { display:block;font-size:0.72rem;color:#aaa; }
+</style>
 
-<div id="style-panel" role="dialog" aria-label="Design-Einstellungen" aria-modal="false">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-    <span class="sp-title">Design anpassen</span>
-    <button id="style-close" style="border:none;background:none;cursor:pointer;color:#888;font-size:1.2rem;line-height:1;padding:4px;" aria-label="Schließen">✕</button>
-  </div>
-
-  <span class="sp-label">Farbschema</span>
-  <div class="color-swatches" id="color-swatches">
-    <!-- Injected by JS -->
-  </div>
-
-  <div class="sp-divider"></div>
-
-  <span class="sp-label">Schriftart</span>
-  <div class="font-list" id="font-list">
-    <!-- Injected by JS -->
+<div id="ts-wrap">
+  <button id="ts-btn" title="Design anpassen" aria-label="Design Switcher öffnen">🎨</button>
+  <div id="ts-panel" role="dialog" aria-label="Design-Einstellungen">
+    <div class="ts-header">
+      <span class="ts-title">Design Switcher</span>
+      <button class="ts-close" id="ts-close" aria-label="Schließen">✕</button>
+    </div>
+    <div class="ts-tabs">
+      <button class="ts-tab active" data-pane="colors">Farben</button>
+      <button class="ts-tab" data-pane="fonts">Schriften</button>
+    </div>
+    <div class="ts-body">
+      <div class="ts-pane active" id="ts-pane-colors">
+        <span class="ts-lbl">Farbthema (12)</span>
+        <div class="ts-swatches" id="ts-swatches"></div>
+        <span class="ts-lbl">Eigene Farben</span>
+        <div class="ts-pickers">
+          <div class="ts-pick-wrap">
+            <span class="ts-pick-lbl">Primärfarbe</span>
+            <div class="ts-pick-row">
+              <input type="color" id="ts-cp-picker" value="#0c1f33" />
+              <input type="text"  id="ts-cp-hex"    value="#0c1f33" maxlength="7" />
+            </div>
+          </div>
+          <div class="ts-pick-wrap">
+            <span class="ts-pick-lbl">Akzentfarbe</span>
+            <div class="ts-pick-row">
+              <input type="color" id="ts-ca-picker" value="#d4772d" />
+              <input type="text"  id="ts-ca-hex"    value="#d4772d" maxlength="7" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ts-pane" id="ts-pane-fonts">
+        <span class="ts-lbl">Schriftpaar (10)</span>
+        <div class="ts-fonts" id="ts-font-list"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -943,7 +993,7 @@
   burgerBtn.addEventListener('click', openMenu);
   closeBtn.addEventListener('click', closeMenu);
   mobileMenu.querySelectorAll('.mobile-nav-link, .btn-primary').forEach(l => l.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', e => { if (e.key==='Escape') { closeMenu(); closeStylePanel(); } });
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeMenu(); });
 
   // ── Tabs ─────────────────────────────────────────────────────
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -971,106 +1021,209 @@
     gsap.to(el, { opacity:1, y:0, duration:0.8, delay:0.3 + i * 0.15, ease:'power2.out' });
   });
 
-  // ════════════════════════════════════════════════
-  //  STYLE SWITCHER
-  // ════════════════════════════════════════════════
+</script>
 
+<script>
+// DESIGN SWITCHER (temporär – zum Testen)
+(function () {
+  // ── Helpers ──────────────────────────────────────────────────
+  function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    return {
+      r: parseInt(hex.slice(0, 2), 16),
+      g: parseInt(hex.slice(2, 4), 16),
+      b: parseInt(hex.slice(4, 6), 16),
+      get css() { return `${this.r},${this.g},${this.b}`; }
+    };
+  }
+  function rgbToHex(r, g, b) {
+    return '#' + [r, g, b].map(v =>
+      Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')
+    ).join('');
+  }
+  function hexToHsl(hex) {
+    let { r, g, b } = hexToRgb(hex);
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) { h = s = 0; }
+    else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+        case g: h = ((b - r) / d + 2) / 6; break;
+        case b: h = ((r - g) / d + 4) / 6; break;
+      }
+    }
+    return { h: h * 360, s: s * 100, l: l * 100 };
+  }
+  function hslToRgb(h, s, l) {
+    s /= 100; l /= 100;
+    const k = n => (n + h / 30) % 12;
+    const a = s * Math.min(l, 1 - l);
+    const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+    return { r: Math.round(f(0) * 255), g: Math.round(f(8) * 255), b: Math.round(f(4) * 255) };
+  }
+  function lighten(hex, amt) {
+    const { h, s, l } = hexToHsl(hex);
+    const { r, g, b } = hslToRgb(h, s, Math.min(96, l + amt));
+    return rgbToHex(r, g, b);
+  }
+  function darken(hex, amt) {
+    const { h, s, l } = hexToHsl(hex);
+    const { r, g, b } = hslToRgb(h, s, Math.max(4, l - amt));
+    return rgbToHex(r, g, b);
+  }
+
+  // ── Apply theme vars ──────────────────────────────────────────
+  function setVars(primary, accent, bg) {
+    const R = document.documentElement.style;
+    const bg2 = darken(bg, 3), bg3 = darken(bg, 9);
+    // Primary
+    R.setProperty('--cp',         primary);
+    R.setProperty('--cp-rgb',     hexToRgb(primary).css);
+    R.setProperty('--cp2',        lighten(primary, 9));
+    R.setProperty('--c-primary',  primary);
+    R.setProperty('--c-primary-rgb',   hexToRgb(primary).css);
+    R.setProperty('--c-primary-light', lighten(primary, 16));
+    R.setProperty('--c-primary-d1',    darken(primary, 8));
+    R.setProperty('--c-primary-d2',    darken(primary, 18));
+    // Accent
+    R.setProperty('--ca',         accent);
+    R.setProperty('--ca-rgb',     hexToRgb(accent).css);
+    R.setProperty('--cad',        darken(accent, 12));
+    R.setProperty('--cad-rgb',    hexToRgb(darken(accent, 12)).css);
+    R.setProperty('--cam',        lighten(accent, 9));
+    R.setProperty('--cal',        lighten(accent, 22));
+    R.setProperty('--c-accent',   accent);
+    R.setProperty('--c-accent-rgb',   hexToRgb(accent).css);
+    R.setProperty('--c-accent-light', lighten(accent, 22));
+    R.setProperty('--c-accent-d1',    darken(accent, 9));
+    R.setProperty('--c-accent-d2',    darken(accent, 18));
+    // Background
+    R.setProperty('--cbg',  bg);
+    R.setProperty('--cbg2', bg2);
+    R.setProperty('--cbg3', bg3);
+    // Sync pickers
+    cpPicker.value = primary; cpHex.value = primary;
+    caPicker.value = accent;  caHex.value = accent;
+  }
+
+  // ── 12 Themes ─────────────────────────────────────────────────
   const THEMES = [
-    { id:'marine',    name:'Marine',    cp:'#0c1f33', cpR:'12,31,51',    cp2:'#163255', ca:'#d4772d', caR:'212,119,45',  cad:'#b86a2a', cadR:'184,106,42', cam:'#e88c44', cal:'#f4a469', cbg:'#f8f5f0', cbg2:'#f0ebe3', cbg3:'#e2d8cc' },
-    { id:'forest',    name:'Forest',    cp:'#142b1f', cpR:'20,43,31',    cp2:'#1e4030', ca:'#c9a227', caR:'201,162,39',  cad:'#a88520', cadR:'168,133,32', cam:'#dbb840', cal:'#e8c050', cbg:'#f5f5ef', cbg2:'#ecebe2', cbg3:'#dddccc' },
-    { id:'graphite',  name:'Graphite',  cp:'#1c2028', cpR:'28,32,40',    cp2:'#252d3a', ca:'#2a9d8f', caR:'42,157,143', cad:'#1f7a6e', cadR:'31,122,110', cam:'#40b5a8', cal:'#5bbfb4', cbg:'#f4f5f6', cbg2:'#e9ebec', cbg3:'#d4d8db' },
-    { id:'midnight',  name:'Midnight',  cp:'#16063a', cpR:'22,6,58',     cp2:'#220a58', ca:'#f59e0b', caR:'245,158,11', cad:'#d97706', cadR:'217,119,6',  cam:'#fbbf24', cal:'#fcd34d', cbg:'#faf8ff', cbg2:'#ede8fb', cbg3:'#ddd5f4' },
-    { id:'ember',     name:'Ember',     cp:'#1f110a', cpR:'31,17,10',    cp2:'#2e180e', ca:'#e07040', caR:'224,112,64', cad:'#c0562a', cadR:'192,86,42',  cam:'#f09070', cal:'#f4a880', cbg:'#faf6f2', cbg2:'#f0e8e0', cbg3:'#e0cec0' },
-    { id:'steel',     name:'Steel',     cp:'#0e1c2e', cpR:'14,28,46',    cp2:'#152840', ca:'#3b82f6', caR:'59,130,246', cad:'#2563eb', cadR:'37,99,235',  cam:'#60a5fa', cal:'#93c5fd', cbg:'#f4f6fb', cbg2:'#e8edf8', cbg3:'#d0d9f0' },
-    { id:'stone',     name:'Stone',     cp:'#1f1b16', cpR:'31,27,22',    cp2:'#2d2820', ca:'#b5451b', caR:'181,69,27',  cad:'#8b3416', cadR:'139,52,22',  cam:'#d06030', cal:'#e08050', cbg:'#f8f5f0', cbg2:'#f0ebe2', cbg3:'#e0d4c8' },
-    { id:'pine',      name:'Pine',      cp:'#0e2318', cpR:'14,35,24',    cp2:'#163524', ca:'#cc8a1a', caR:'204,138,26', cad:'#a36e14', cadR:'163,110,20', cam:'#e0a030', cal:'#e8b84a', cbg:'#f5f7f4', cbg2:'#e8ede4', cbg3:'#d4ddd0' },
+    { id:'navy',       name:'Navy',       primary:'#0c1f33', accent:'#d4772d', bg:'#f8f5f0' },
+    { id:'slateblue',  name:'Slate Blue', primary:'#1e3a5f', accent:'#4a90d9', bg:'#f0f4f9' },
+    { id:'forest',     name:'Forest',     primary:'#142b1f', accent:'#c9a227', bg:'#f5f5ef' },
+    { id:'copper',     name:'Copper',     primary:'#2a1a10', accent:'#c87941', bg:'#faf6f1' },
+    { id:'charcoal',   name:'Charcoal',   primary:'#1c2028', accent:'#2a9d8f', bg:'#f4f5f6' },
+    { id:'terracotta', name:'Terracotta', primary:'#2d1208', accent:'#c0522a', bg:'#faf3ee' },
+    { id:'steel',      name:'Steel',      primary:'#0e1c2e', accent:'#3b82f6', bg:'#f4f6fb' },
+    { id:'sand',       name:'Sand',       primary:'#2d2414', accent:'#b8924e', bg:'#faf8f3' },
+    { id:'midnight',   name:'Midnight',   primary:'#0a0518', accent:'#8b5cf6', bg:'#f9f8ff' },
+    { id:'signal',     name:'Signal',     primary:'#0d1b2a', accent:'#dc2626', bg:'#f4f5f5' },
+    { id:'olive',      name:'Olive',      primary:'#1a2010', accent:'#8a9c30', bg:'#f5f6f0' },
+    { id:'warmgrey',   name:'Warm Grey',  primary:'#2a2420', accent:'#b07040', bg:'#f8f6f4' },
   ];
 
+  // ── 10 Fonts ──────────────────────────────────────────────────
   const FONTS = [
-    { id:'inter',     name:'Inter + Playfair',          fb:"'Inter', sans-serif",                fh:"'Playfair Display', serif",      preview:'Aa — klassisch elegant' },
-    { id:'poppins',   name:'Poppins + Merriweather',     fb:"'Poppins', sans-serif",              fh:"'Merriweather', serif",           preview:'Aa — modern & lesbar' },
-    { id:'raleway',   name:'Raleway + Cormorant',        fb:"'Raleway', sans-serif",              fh:"'Cormorant Garamond', serif",     preview:'Aa — filigran & edel' },
-    { id:'montserrat',name:'Montserrat + Libre',         fb:"'Montserrat', sans-serif",           fh:"'Libre Baskerville', serif",      preview:'Aa — klar & professionell' },
-    { id:'dmsans',    name:'DM Sans + DM Serif',         fb:"'DM Sans', sans-serif",              fh:"'DM Serif Display', serif",       preview:'Aa — dezent & harmonisch' },
-    { id:'nunito',    name:'Nunito + Lora',              fb:"'Nunito', sans-serif",               fh:"'Lora', serif",                   preview:'Aa — freundlich & warm' },
-    { id:'outfit',    name:'Outfit + Fraunces',          fb:"'Outfit', sans-serif",               fh:"'Fraunces', serif",               preview:'Aa — zeitgemäß & kühn' },
-    { id:'jakarta',   name:'Plus Jakarta + Instrument',  fb:"'Plus Jakarta Sans', sans-serif",    fh:"'Instrument Serif', serif",       preview:'Aa — urban & frisch' },
-    { id:'worksans',  name:'Work Sans + Yeseva One',     fb:"'Work Sans', sans-serif",            fh:"'Yeseva One', serif",             preview:'Aa — stark & markant' },
-    { id:'mulish',    name:'Mulish + Domine',            fb:"'Mulish', sans-serif",               fh:"'Domine', serif",                 preview:'Aa — schlank & technisch' },
+    { id:'inter',      fh:"'Playfair Display',serif",       fb:"'Inter',sans-serif",            name:'Inter + Playfair',           preview:'Klassisch & elegant' },
+    { id:'poppins',    fh:"'Merriweather',serif",            fb:"'Poppins',sans-serif",           name:'Poppins + Merriweather',     preview:'Modern & lesbar' },
+    { id:'raleway',    fh:"'Cormorant Garamond',serif",      fb:"'Raleway',sans-serif",           name:'Raleway + Cormorant',        preview:'Filigran & edel' },
+    { id:'montserrat', fh:"'Libre Baskerville',serif",       fb:"'Montserrat',sans-serif",        name:'Montserrat + Libre',         preview:'Klar & professionell' },
+    { id:'dmsans',     fh:"'DM Serif Display',serif",        fb:"'DM Sans',sans-serif",           name:'DM Sans + DM Serif',         preview:'Dezent & harmonisch' },
+    { id:'nunito',     fh:"'Lora',serif",                    fb:"'Nunito',sans-serif",            name:'Nunito + Lora',              preview:'Freundlich & warm' },
+    { id:'outfit',     fh:"'Fraunces',serif",                fb:"'Outfit',sans-serif",            name:'Outfit + Fraunces',          preview:'Zeitgemäß & kühn' },
+    { id:'jakarta',    fh:"'Instrument Serif',serif",        fb:"'Plus Jakarta Sans',sans-serif", name:'Plus Jakarta + Instrument',  preview:'Urban & frisch' },
+    { id:'worksans',   fh:"'Yeseva One',serif",              fb:"'Work Sans',sans-serif",         name:'Work Sans + Yeseva One',     preview:'Stark & markant' },
+    { id:'mulish',     fh:"'Domine',serif",                  fb:"'Mulish',sans-serif",            name:'Mulish + Domine',            preview:'Schlank & technisch' },
   ];
 
-  let activeTheme = 'marine';
-  let activeFont  = 'inter';
+  let activeThemeId = 'navy', activeFontId = 'inter';
 
-  function applyTheme(t) {
-    const r = document.documentElement.style;
-    r.setProperty('--cp',   t.cp);
-    r.setProperty('--cp-rgb', t.cpR);
-    r.setProperty('--cp2',  t.cp2);
-    r.setProperty('--ca',   t.ca);
-    r.setProperty('--ca-rgb', t.caR);
-    r.setProperty('--cad',  t.cad);
-    r.setProperty('--cad-rgb', t.cadR);
-    r.setProperty('--cam',  t.cam);
-    r.setProperty('--cal',  t.cal);
-    r.setProperty('--cbg',  t.cbg);
-    r.setProperty('--cbg2', t.cbg2);
-    r.setProperty('--cbg3', t.cbg3);
-    activeTheme = t.id;
-    document.querySelectorAll('.swatch').forEach(s => {
-      s.classList.toggle('active', s.dataset.theme === t.id);
-    });
-  }
-
-  function applyFont(f) {
-    const r = document.documentElement.style;
-    r.setProperty('--fh', f.fh);
-    r.setProperty('--fb', f.fb);
-    activeFont = f.id;
-    document.querySelectorAll('.font-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.font === f.id);
-    });
-  }
-
-  // Build swatches
-  const swatchContainer = document.getElementById('color-swatches');
+  // ── Build swatches ────────────────────────────────────────────
+  const grid = document.getElementById('ts-swatches');
   THEMES.forEach(t => {
-    const s = document.createElement('button');
-    s.className = 'swatch' + (t.id === activeTheme ? ' active' : '');
-    s.dataset.theme = t.id;
-    s.title = t.name;
-    s.setAttribute('aria-label', t.name);
-    s.innerHTML = `<div class="swatch-top" style="background:${t.cp};"></div><div class="swatch-bottom" style="background:${t.ca};"></div><div class="swatch-name">${t.name}</div>`;
-    s.addEventListener('click', () => applyTheme(t));
-    swatchContainer.appendChild(s);
+    const btn = document.createElement('button');
+    btn.className = 'ts-swatch' + (t.id === activeThemeId ? ' active' : '');
+    btn.dataset.id = t.id;
+    btn.title = t.name;
+    btn.setAttribute('aria-label', t.name);
+    btn.innerHTML = `<div class="ts-sw-top" style="background:${t.primary}"></div><div class="ts-sw-bot" style="background:${t.accent}"></div><div class="ts-sw-name">${t.name}</div>`;
+    btn.addEventListener('click', () => {
+      setVars(t.primary, t.accent, t.bg);
+      activeThemeId = t.id;
+      document.querySelectorAll('.ts-swatch').forEach(s => s.classList.toggle('active', s.dataset.id === t.id));
+    });
+    grid.appendChild(btn);
   });
 
-  // Build font buttons
-  const fontContainer = document.getElementById('font-list');
+  // ── Build font list ───────────────────────────────────────────
+  const fontList = document.getElementById('ts-font-list');
   FONTS.forEach(f => {
-    const b = document.createElement('button');
-    b.className = 'font-btn' + (f.id === activeFont ? ' active' : '');
-    b.dataset.font = f.id;
-    b.setAttribute('aria-label', f.name);
-    b.innerHTML = `<span class="font-btn-name" style="font-family:${f.fh};">${f.name}</span><span class="font-btn-preview" style="font-family:${f.fb};">${f.preview}</span>`;
-    b.addEventListener('click', () => applyFont(f));
-    fontContainer.appendChild(b);
+    const btn = document.createElement('button');
+    btn.className = 'ts-font-btn' + (f.id === activeFontId ? ' active' : '');
+    btn.dataset.id = f.id;
+    btn.innerHTML = `<span class="ts-fn" style="font-family:${f.fh}">${f.name}</span><span class="ts-fp" style="font-family:${f.fb}">${f.preview}</span>`;
+    btn.addEventListener('click', () => {
+      document.documentElement.style.setProperty('--fh', f.fh);
+      document.documentElement.style.setProperty('--fb', f.fb);
+      activeFontId = f.id;
+      document.querySelectorAll('.ts-font-btn').forEach(b => b.classList.toggle('active', b.dataset.id === f.id));
+    });
+    fontList.appendChild(btn);
   });
 
-  // Toggle panel
-  const toggleBtn   = document.getElementById('style-toggle');
-  const panel       = document.getElementById('style-panel');
-  const styleClose  = document.getElementById('style-close');
-  let panelOpen = false;
+  // ── Custom color pickers ──────────────────────────────────────
+  const cpPicker = document.getElementById('ts-cp-picker');
+  const cpHex    = document.getElementById('ts-cp-hex');
+  const caPicker = document.getElementById('ts-ca-picker');
+  const caHex    = document.getElementById('ts-ca-hex');
 
-  function openStylePanel()  { panel.classList.add('open');    panelOpen = true;  toggleBtn.style.transform='rotate(15deg) scale(1.1)'; }
-  function closeStylePanel() { panel.classList.remove('open'); panelOpen = false; toggleBtn.style.transform=''; }
+  function isHex(v) { return /^#[0-9a-fA-F]{6}$/.test(v); }
+  function getVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
 
-  toggleBtn.addEventListener('click', () => panelOpen ? closeStylePanel() : openStylePanel());
-  styleClose.addEventListener('click', closeStylePanel);
-  document.addEventListener('click', e => {
-    if (panelOpen && !panel.contains(e.target) && e.target !== toggleBtn) closeStylePanel();
+  function applyCustom() {
+    const bg = getVar('--cbg') || '#f8f5f0';
+    setVars(cpPicker.value, caPicker.value, bg);
+    document.querySelectorAll('.ts-swatch').forEach(s => s.classList.remove('active'));
+    activeThemeId = null;
+  }
+  cpPicker.addEventListener('input', () => { cpHex.value = cpPicker.value; applyCustom(); });
+  caPicker.addEventListener('input', () => { caHex.value = caPicker.value; applyCustom(); });
+  cpHex.addEventListener('input', () => {
+    const v = cpHex.value.startsWith('#') ? cpHex.value : '#' + cpHex.value;
+    if (isHex(v)) { cpPicker.value = v; applyCustom(); }
   });
+  caHex.addEventListener('input', () => {
+    const v = caHex.value.startsWith('#') ? caHex.value : '#' + caHex.value;
+    if (isHex(v)) { caPicker.value = v; applyCustom(); }
+  });
+
+  // ── Tabs ──────────────────────────────────────────────────────
+  document.querySelectorAll('.ts-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ts-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.ts-pane').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('ts-pane-' + tab.dataset.pane).classList.add('active');
+    });
+  });
+
+  // ── Panel open / close ────────────────────────────────────────
+  const tsBtn   = document.getElementById('ts-btn');
+  const tsPanel = document.getElementById('ts-panel');
+  const tsClose = document.getElementById('ts-close');
+  let open = false;
+  function openPanel()  { tsPanel.classList.add('open');    open = true;  tsBtn.style.transform = 'rotate(15deg)'; }
+  function closePanel() { tsPanel.classList.remove('open'); open = false; tsBtn.style.transform = ''; }
+  tsBtn.addEventListener('click',  e => { e.stopPropagation(); open ? closePanel() : openPanel(); });
+  tsClose.addEventListener('click', closePanel);
+  document.addEventListener('click', e => { if (open && !tsPanel.contains(e.target) && e.target !== tsBtn) closePanel(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && open) closePanel(); });
+})();
 </script>
 
 </body>
