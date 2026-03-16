@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Höwel Sanitär und Heizung GmbH – Sanitärinstallateur in Köln</title>
+  <meta name="description" content="Höwel Sanitär und Heizung GmbH – Ihr Fachbetrieb für Sanitär und Heizung in Köln. Zuverlässig, fair und erfahren seit Jahren. Jetzt Termin anfragen." />
+  <meta name="keywords" content="Sanitär Köln, Heizung Köln, Sanitärinstallateur Köln, Heizungsinstallateur Köln, Klempner Köln, Höwel Sanitär, Notdienst Sanitär Köln, Badezimmer Köln" />
+  <meta property="og:title" content="Höwel Sanitär und Heizung GmbH – Sanitärinstallateur in Köln" />
+  <meta property="og:description" content="Ihr zuverlässiger Fachbetrieb für Sanitär und Heizung in Köln-Nippes. Faire Preise, kompetente Monteure, persönlicher Service." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://website-hoewel.vercel.app" />
+  <link rel="canonical" href="https://website-hoewel.vercel.app" />
+
+  <!-- Google Fonts — all 10 pairs preloaded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link id="gfont-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Merriweather:wght@400;700&family=Raleway:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&family=Nunito:wght@300;400;500;600&family=Lora:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Fraunces:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Instrument+Serif&family=Work+Sans:wght@300;400;500;600&family=Yeseva+One&family=Mulish:wght@300;400;500;600&family=Domine:wght@400;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: { extend: {} }
+    };
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════════════
+       CSS CUSTOM PROPERTIES — all brand tokens
+    ══════════════════════════════════════════════ */
+    :root {
+      /* Primary (dark) */
+      --cp:      #0c1f33;
+      --cp-rgb:  12,31,51;
+      --cp2:     #163255;
+      /* Accent (highlight) */
+      --ca:      #d4772d;
+      --ca-rgb:  212,119,45;
+      --cad:     #b86a2a;
+      --cad-rgb: 184,106,42;
+      --cam:     #e88c44;
+      --cal:     #f4a469;
+      /* Backgrounds */
+      --cbg:     #f8f5f0;
+      --cbg2:    #f0ebe3;
+      --cbg3:    #e2d8cc;
+      /* Fonts */
+      --fh: 'Playfair Display', Georgia, serif;
+      --fb: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--cbg); color: #1a1a1a; }
+
+    /* Grain texture */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    #nav { position:fixed;top:0;left:0;right:0;z-index:900;transition:background 0.4s,box-shadow 0.4s,backdrop-filter 0.4s; }
+    #nav.scrolled { background:rgba(var(--cp-rgb),0.97);box-shadow:0 2px 24px rgba(0,0,0,0.25);backdrop-filter:blur(12px); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero-img-overlay::after { content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(var(--cp-rgb),0.82) 0%,rgba(var(--cp-rgb),0.45) 50%,rgba(var(--cp-rgb),0.2) 100%); }
+    .hero-color-wash { position:absolute;inset:0;background:rgba(var(--ca-rgb),0.12);mix-blend-mode:multiply;z-index:1; }
+
+    /* ── BUTTONS ─────────────────────────────────────────── */
+    .btn-primary {
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--ca);color:#fff;font-family:var(--fb);
+      font-weight:600;font-size:0.875rem;letter-spacing:0.03em;
+      padding:14px 28px;border-radius:4px;border:2px solid var(--ca);cursor:pointer;
+      transition:background 0.2s,transform 0.15s,box-shadow 0.2s;text-decoration:none;
+      box-shadow:0 4px 18px rgba(var(--ca-rgb),0.32),0 1px 4px rgba(0,0,0,0.12);
+    }
+    .btn-primary:hover  { background:var(--cad);border-color:var(--cad);transform:translateY(-2px);box-shadow:0 8px 28px rgba(var(--ca-rgb),0.42),0 2px 6px rgba(0,0,0,0.15); }
+    .btn-primary:active { transform:translateY(0); }
+    .btn-primary:focus-visible { outline:3px solid var(--cal);outline-offset:3px; }
+
+    .btn-outline {
+      display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;
+      font-family:var(--fb);font-weight:500;font-size:0.875rem;letter-spacing:0.03em;
+      padding:14px 28px;border-radius:4px;border:2px solid rgba(255,255,255,0.55);cursor:pointer;
+      transition:background 0.2s,border-color 0.2s,transform 0.15s;text-decoration:none;
+    }
+    .btn-outline:hover  { background:rgba(255,255,255,0.1);border-color:#fff;transform:translateY(-2px); }
+    .btn-outline:active { transform:translateY(0); }
+    .btn-outline:focus-visible { outline:3px solid var(--cal);outline-offset:3px; }
+
+    /* ── STAT CARD ───────────────────────────────────────── */
+    .stat-card {
+      background:#ffffff;border-radius:8px;padding:28px 32px;
+      box-shadow:0 4px 32px rgba(var(--cp-rgb),0.08),0 1px 4px rgba(var(--cp-rgb),0.05);
+      transition:transform 0.2s,box-shadow 0.2s;
+    }
+    .stat-card:hover { transform:translateY(-4px);box-shadow:0 12px 48px rgba(var(--cp-rgb),0.13),0 2px 8px rgba(var(--cp-rgb),0.08); }
+    .stat-num  { font-family:var(--fh);font-size:2.5rem;font-weight:700;letter-spacing:-0.04em;color:var(--cp); }
+    .stat-label { font-family:var(--fb);font-size:0.8125rem;color:#6b7280;letter-spacing:0.02em; }
+    .stat-sub   { font-family:var(--fb);font-size:0.75rem;color:var(--ca);margin-top:8px;font-weight:500; }
+
+    /* ── TABS ────────────────────────────────────────────── */
+    .tab-btn {
+      position:relative;cursor:pointer;font-family:var(--fb);
+      font-weight:500;font-size:0.875rem;letter-spacing:0.04em;text-transform:uppercase;
+      padding:14px 28px;color:#4a5568;border:none;background:none;transition:color 0.2s;
+    }
+    .tab-btn::after { content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:var(--ca);transition:left 0.3s,right 0.3s; }
+    .tab-btn.active { color:var(--ca); }
+    .tab-btn.active::after { left:20%;right:20%; }
+    .tab-btn:hover:not(.active) { color:var(--cp); }
+    .tab-btn:focus-visible { outline:3px solid var(--ca);outline-offset:2px;border-radius:2px; }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:grid; }
+
+    /* ── SERVICE CARD ────────────────────────────────────── */
+    .service-card {
+      background:#fff;border-radius:10px;overflow:hidden;
+      box-shadow:0 2px 16px rgba(var(--cp-rgb),0.07),0 1px 4px rgba(var(--cp-rgb),0.04);
+      transition:transform 0.25s,box-shadow 0.25s;
+    }
+    .service-card:hover { transform:translateY(-6px);box-shadow:0 16px 48px rgba(var(--cp-rgb),0.14),0 4px 12px rgba(var(--cp-rgb),0.08); }
+    .service-card h3 { font-family:var(--fh);font-size:1.25rem;font-weight:700;color:var(--cp);letter-spacing:-0.02em;margin-bottom:8px; }
+    .service-card p  { font-family:var(--fb);font-size:0.9rem;color:#6b7280;line-height:1.7; }
+
+    /* ── TESTIMONIAL ─────────────────────────────────────── */
+    .testimonial-card {
+      background:#fff;border-radius:12px;padding:24px;
+      box-shadow:0 2px 20px rgba(var(--cp-rgb),0.07),0 1px 4px rgba(var(--cp-rgb),0.04);
+    }
+    .testimonial-card .author-name { font-family:var(--fb);font-weight:600;font-size:0.875rem;color:#1a1a1a; }
+    .testimonial-card .author-src  { font-family:var(--fb);font-size:0.75rem;color:#9ca3af; }
+
+    /* ── MARQUEE ─────────────────────────────────────────── */
+    .marquee-wrap { overflow:hidden;position:relative; }
+    .marquee-wrap::before,.marquee-wrap::after { content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2; }
+    .marquee-wrap::before { left:0;background:linear-gradient(to right,var(--cbg2),transparent); }
+    .marquee-wrap::after  { right:0;background:linear-gradient(to left, var(--cbg2),transparent); }
+    .marquee-track { display:flex;align-items:center;gap:56px;animation:marquee 28s linear infinite;width:max-content; }
+    .marquee-track:hover { animation-play-state:paused; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-name { font-family:var(--fh);font-size:1.5rem;font-weight:600;color:#9ca3af;letter-spacing:-0.02em; }
+
+    /* ── FORM ────────────────────────────────────────────── */
+    .form-input {
+      width:100%;padding:14px 16px;background:#fff;border:1.5px solid var(--cbg3);
+      border-radius:6px;color:#1a1a1a;font-family:var(--fb);font-size:0.9375rem;
+      transition:border-color 0.2s,box-shadow 0.2s;
+    }
+    .form-input::placeholder { color:#9ca3af; }
+    .form-input:focus { outline:none;border-color:var(--ca);box-shadow:0 0 0 3px rgba(var(--ca-rgb),0.12); }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    .footer-link { color:#94a3b8;font-size:0.875rem;transition:color 0.2s;text-decoration:none;display:inline-block; }
+    .footer-link:hover { color:var(--cal); }
+    .footer-link:focus-visible { outline:2px solid var(--cal);outline-offset:2px;border-radius:2px; }
+
+    /* ── MOBILE MENU ─────────────────────────────────────── */
+    #mobile-menu {
+      display:none;position:fixed;inset:0;z-index:899;background:var(--cp);
+      flex-direction:column;justify-content:center;align-items:center;gap:40px;
+    }
+    #mobile-menu.open { display:flex; }
+    .mobile-nav-link { font-family:var(--fh);font-size:2rem;font-weight:600;color:#f8f5f0;text-decoration:none;letter-spacing:-0.02em;transition:color 0.2s; }
+    .mobile-nav-link:hover { color:var(--ca); }
+    .mobile-nav-link:focus-visible { outline:2px solid var(--ca);outline-offset:4px; }
+
+    /* ── SECTION BADGE ───────────────────────────────────── */
+    .section-badge {
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(var(--ca-rgb),0.1);border:1px solid rgba(var(--ca-rgb),0.25);
+      color:var(--cad);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+      padding:6px 14px;border-radius:100px;margin-bottom:16px;font-family:var(--fb);
+    }
+
+    /* ── DOT DIVIDER ─────────────────────────────────────── */
+    .dot-divider { width:40px;height:3px;background:linear-gradient(to right,var(--ca),var(--cal));border-radius:2px; }
+
+    /* ── ICON CIRCLE ─────────────────────────────────────── */
+    .icon-circle {
+      width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      background:rgba(var(--ca-rgb),0.1);color:var(--ca);font-size:1.5rem;flex-shrink:0;
+    }
+
+    /* ── HEADINGS ────────────────────────────────────────── */
+    .h-display { font-family:var(--fh); }
+
+    /* ── ABOUT FEATURE CARDS ─────────────────────────────── */
+    .about-feat { background:rgba(255,255,255,0.05);border-radius:10px;padding:18px;display:flex;gap:16px;align-items:flex-start; }
+    .about-feat-icon { width:56px;height:56px;border-radius:50%;background:rgba(var(--ca-rgb),0.15);color:var(--cal);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .about-feat h4 { font-family:var(--fh);font-weight:600;color:#fff;font-size:1rem;margin-bottom:4px; }
+    .about-feat p  { font-family:var(--fb);font-size:0.825rem;color:rgba(255,255,255,0.55);line-height:1.6; }
+
+    /* ── SECTION HEADINGS ────────────────────────────────── */
+    .section-title { font-family:var(--fh);font-weight:700;letter-spacing:-0.03em;color:var(--cp); }
+    .section-title-light { font-family:var(--fh);font-weight:700;letter-spacing:-0.03em;color:#fff; }
+    .section-sub { font-family:var(--fb);color:#6b7280;line-height:1.75; }
+
+    /* ── ABOUT BADGE ─────────────────────────────────────── */
+    .years-badge { background:var(--ca);border-radius:12px;padding:20px 24px;text-align:center;box-shadow:0 12px 40px rgba(var(--ca-rgb),0.45); }
+    .years-badge .num { font-family:var(--fh);font-size:2rem;font-weight:700;color:#fff;letter-spacing:-0.04em;line-height:1; }
+    .years-badge .lbl { font-family:var(--fb);font-size:0.7rem;color:rgba(255,255,255,0.8);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px; }
+
+    /* ── CTA BAND ────────────────────────────────────────── */
+    .cta-band { background:linear-gradient(135deg,var(--ca) 0%,var(--cad) 100%);position:relative;overflow:hidden; }
+
+    /* ── CONTACT ─────────────────────────────────────────── */
+    .contact-icon { background:rgba(var(--ca-rgb),0.1);color:var(--ca); }
+
+    /* ── SCROLL BOUNCE ───────────────────────────────────── */
+    @keyframes scrollBounce { 0%,100%{opacity:.5;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.15)} }
+
+    /* ── STYLE SWITCHER ──────────────────────────────────── */
+    #style-toggle {
+      position:fixed;bottom:28px;right:28px;z-index:9000;
+      width:52px;height:52px;border-radius:50%;
+      background:var(--cp);border:2px solid rgba(255,255,255,0.15);
+      box-shadow:0 8px 32px rgba(0,0,0,0.35);
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
+      transition:transform 0.2s,box-shadow 0.2s;
+    }
+    #style-toggle:hover { transform:scale(1.1);box-shadow:0 12px 40px rgba(0,0,0,0.45); }
+
+    #style-panel {
+      position:fixed;bottom:92px;right:28px;z-index:8999;
+      background:#fff;border-radius:16px;padding:24px;
+      box-shadow:0 24px 80px rgba(0,0,0,0.2),0 4px 16px rgba(0,0,0,0.1);
+      width:300px;
+      transform:translateY(16px) scale(0.95);opacity:0;pointer-events:none;
+      transition:transform 0.25s cubic-bezier(.34,1.56,.64,1),opacity 0.2s;
+    }
+    #style-panel.open { transform:translateY(0) scale(1);opacity:1;pointer-events:all; }
+
+    .sp-label { font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3af;margin-bottom:10px;display:block; }
+    .sp-title { font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:#111;margin-bottom:20px; }
+
+    .color-swatches { display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px; }
+    .swatch {
+      position:relative;height:44px;border-radius:8px;cursor:pointer;overflow:hidden;
+      box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:transform 0.15s,box-shadow 0.15s;
+      border:2px solid transparent;
+    }
+    .swatch:hover { transform:scale(1.07);box-shadow:0 4px 16px rgba(0,0,0,0.2); }
+    .swatch.active { border-color:#111;transform:scale(1.07); }
+    .swatch-top    { position:absolute;top:0;left:0;right:0;bottom:50%; }
+    .swatch-bottom { position:absolute;bottom:0;left:0;right:0;top:50%; }
+    .swatch-name   { position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;font-family:'Inter',sans-serif;font-size:0.55rem;font-weight:600;color:rgba(255,255,255,0.9);text-align:center;text-shadow:0 1px 2px rgba(0,0,0,0.5); }
+
+    .font-list { display:flex;flex-direction:column;gap:4px; }
+    .font-btn {
+      padding:8px 12px;border-radius:6px;cursor:pointer;border:1.5px solid transparent;
+      background:#f8f8f8;transition:all 0.15s;text-align:left;width:100%;
+    }
+    .font-btn:hover { background:#f0f0f0;border-color:#d0d0d0; }
+    .font-btn.active { background:rgba(var(--ca-rgb),0.08);border-color:var(--ca); }
+    .font-btn-name  { font-size:0.8125rem;font-weight:600;color:#333;display:block;margin-bottom:1px; }
+    .font-btn-preview { font-size:0.75rem;color:#888;display:block; }
+
+    .sp-divider { height:1px;background:#f0f0f0;margin:16px 0; }
+
+    /* ── UTIL ────────────────────────────────────────────── */
+    .reveal { will-change:transform; }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════ NAVIGATION ════════════════════════════ -->
+<nav id="nav" aria-label="Hauptnavigation">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+    <a href="#" class="flex items-center gap-3 z-10" aria-label="Höwel Startseite">
+      <div class="flex items-center justify-center w-10 h-10 rounded-full text-white font-bold text-lg" style="background:var(--ca);font-family:var(--fh);">H</div>
+      <div>
+        <span class="block text-white font-bold text-xl leading-none" style="font-family:var(--fh);letter-spacing:-0.02em;">Höwel</span>
+        <span class="block text-xs text-white/60 tracking-widest uppercase mt-0.5" style="font-family:var(--fb);">Sanitär & Heizung</span>
+      </div>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8" role="list">
+      <a href="#leistungen" class="text-white/80 hover:text-white text-sm font-medium transition-colors" style="font-family:var(--fb);">Leistungen</a>
+      <a href="#ueber-uns" class="text-white/80 hover:text-white text-sm font-medium transition-colors" style="font-family:var(--fb);">Über uns</a>
+      <a href="#bewertungen" class="text-white/80 hover:text-white text-sm font-medium transition-colors" style="font-family:var(--fb);">Bewertungen</a>
+      <a href="#kontakt" class="text-white/80 hover:text-white text-sm font-medium transition-colors" style="font-family:var(--fb);">Kontakt</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="tel:02217486350" class="hidden md:flex btn-primary" style="padding:12px 22px;font-size:0.8125rem;">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        0221 748635
+      </a>
+      <button id="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu"
+        class="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-sm">
+        <span class="burger-line block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        <span class="burger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="burger-line block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ MOBILE MENU ════════════════════════════ -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilmenü">
+  <button id="close-menu" aria-label="Menü schließen"
+    class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-white rounded-sm">
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <nav aria-label="Mobilnavigation">
+    <a href="#leistungen" class="mobile-nav-link">Leistungen</a>
+    <a href="#ueber-uns" class="mobile-nav-link">Über uns</a>
+    <a href="#bewertungen" class="mobile-nav-link">Bewertungen</a>
+    <a href="#kontakt" class="mobile-nav-link">Kontakt</a>
+    <a href="tel:02217486350" class="btn-primary mt-4" style="font-size:1rem;padding:16px 36px;">0221 748635</a>
+  </nav>
+</div>
+
+<!-- ═══════════════════════ HERO ════════════════════════════ -->
+<section id="hero" style="min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;" aria-label="Hero">
+  <div class="hero-img-overlay" style="position:absolute;inset:0;">
+    <img src="content/company_images/shutterstock_2511037927.jpg" alt="Heizung- und Sanitärinstallation" loading="eager"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+    <div class="hero-color-wash"></div>
+  </div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(var(--ca-rgb),0.18) 0%,transparent 65%),radial-gradient(ellipse 60% 80% at 85% 20%,rgba(var(--cp-rgb),0.6) 0%,transparent 70%);z-index:2;pointer-events:none;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 w-full pt-24 pb-16" style="position:relative;z-index:3;">
+    <div class="max-w-2xl">
+      <div class="section-badge reveal" style="background:rgba(var(--ca-rgb),0.2);border-color:rgba(var(--ca-rgb),0.4);color:var(--cal);">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+        Sanitärinstallateur in Köln
+      </div>
+
+      <h1 class="reveal section-title-light mt-4 mb-6" style="font-size:clamp(2.75rem,6vw,4.5rem);line-height:1.1;">
+        Ihr Fachbetrieb für<br/>
+        <span style="color:var(--cal);">Sanitär &amp; Heizung</span><br/>
+        in Köln
+      </h1>
+
+      <p class="reveal text-white/75 mb-8" style="font-family:var(--fb);font-size:1.125rem;line-height:1.75;max-width:520px;">
+        Von der Heizungsinstallation bis zur Badsanierung — wir stehen Ihnen als erfahrener Fachbetrieb in Köln mit fairen Preisen und kompetenten Monteuren zur Seite.
+      </p>
+
+      <div class="reveal flex flex-wrap gap-4">
+        <a href="#kontakt" class="btn-primary">
+          Jetzt Termin anfragen
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="tel:02217486350" class="btn-outline">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          0221 748635
+        </a>
+      </div>
+
+      <div class="reveal flex flex-wrap gap-6 mt-12" style="border-top:1px solid rgba(255,255,255,0.12);padding-top:28px;">
+        <div class="flex items-center gap-2 text-white/70">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--cal);" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span style="font-family:var(--fb);font-size:0.875rem;">Meisterbetrieb</span>
+        </div>
+        <div class="flex items-center gap-2 text-white/70">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--cal);" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          <span style="font-family:var(--fb);font-size:0.875rem;">3.716+ Google-Rezensionen</span>
+        </div>
+        <div class="flex items-center gap-2 text-white/70">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--cal);" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span style="font-family:var(--fb);font-size:0.875rem;">Köln & Umgebung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;">
+    <span style="font-family:var(--fb);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Scroll</span>
+    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.5),transparent);animation:scrollBounce 2s ease-in-out infinite;"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ STATS BAR ════════════════════════════ -->
+<section aria-label="Kennzahlen" style="background:var(--cbg);padding:0 24px;">
+  <div class="max-w-7xl mx-auto" style="transform:translateY(-48px);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="stat-card reveal text-center">
+        <div class="stat-num" aria-label="3.716 Bewertungen">3.716</div>
+        <div class="stat-label">Google-Bewertungen</div>
+        <div class="flex justify-center gap-0.5 mt-2" aria-hidden="true">
+          <span style="color:#f59e0b;">★★★★</span><span style="color:#d1d5db;">★</span>
+        </div>
+      </div>
+      <div class="stat-card reveal text-center">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Jahre Erfahrung</div>
+        <div class="dot-divider mx-auto mt-3"></div>
+      </div>
+      <div class="stat-card reveal text-center">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Fachgebiete</div>
+        <div class="stat-sub">Sanitär & Heizung</div>
+      </div>
+      <div class="stat-card reveal text-center">
+        <div class="stat-num">Köln</div>
+        <div class="stat-label">& Umgebung</div>
+        <div class="stat-sub">Vor Ort verfügbar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ LEISTUNGEN ════════════════════════════ -->
+<section id="leistungen" aria-label="Leistungen" style="background:var(--cbg);padding:80px 24px 100px;">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="section-badge reveal">Unsere Leistungen</div>
+      <h2 class="reveal section-title mb-4" style="font-size:clamp(2rem,4vw,3rem);">Was wir für Sie tun</h2>
+      <p class="reveal section-sub mx-auto" style="max-width:520px;font-size:1.0625rem;">
+        Als Full-Service-Fachbetrieb decken wir alle Bereiche der Sanitär- und Heizungsinstallation ab.
+      </p>
+    </div>
+
+    <div class="flex justify-center mb-10 border-b" style="border-color:var(--cbg3);" role="tablist" aria-label="Leistungskategorien">
+      <button class="tab-btn active" data-tab="sanitaer" role="tab" aria-selected="true" aria-controls="panel-sanitaer" id="tab-sanitaer">Sanitär</button>
+      <button class="tab-btn" data-tab="heizung" role="tab" aria-selected="false" aria-controls="panel-heizung" id="tab-heizung">Heizung</button>
+      <button class="tab-btn" data-tab="service" role="tab" aria-selected="false" aria-controls="panel-service" id="tab-service">Service</button>
+    </div>
+
+    <!-- Sanitär Panel -->
+    <div id="panel-sanitaer" class="tab-panel active grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-sanitaer">
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2521741507.jpg" alt="Badsanierung" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">🛁</span></div>
+          <h3>Badsanierung</h3>
+          <p>Komplette Badsanierungen von der Planung bis zur schlüsselfertigen Übergabe — modern, funktional und langlebig.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2556203029.jpg" alt="Rohrinstallation" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">🔧</span></div>
+          <h3>Rohrinstallation</h3>
+          <p>Fachgerechte Verlegung von Trinkwasser-, Abwasser- und Gasrohren für Neubau und Sanierung.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2458334439.jpg" alt="Sanitärobjekte" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">🚿</span></div>
+          <h3>Sanitärobjekte</h3>
+          <p>Montage und Anschluss von Armaturen, Dusche, Badewanne, WC und Waschtisch.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heizung Panel -->
+    <div id="panel-heizung" class="tab-panel grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-heizung">
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2497077479.jpg" alt="Heizungsinstallation" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">🔥</span></div>
+          <h3>Heizungsinstallation</h3>
+          <p>Neubau und Modernisierung von Heizsystemen — von Gas über Öl bis hin zu Wärmepumpen.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2465946405.jpg" alt="Wartung & Reparatur" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">⚙️</span></div>
+          <h3>Wartung & Reparatur</h3>
+          <p>Regelmäßige Inspektion und schnelle Reparatur Ihrer Heizanlage für dauerhaften Betrieb.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2526926309.jpg" alt="Fußbodenheizung" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">🌡️</span></div>
+          <h3>Fußbodenheizung</h3>
+          <p>Installation von Flächenheizungen für energieeffiziente Wärmeverteilung auf allen Ebenen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Panel -->
+    <div id="panel-service" class="tab-panel grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-service">
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2613014373.jpg" alt="Notdienst" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">🚨</span></div>
+          <h3>Notdienst</h3>
+          <p>Schnelle Hilfe bei Rohrbruch, Heizungsausfall oder anderen dringenden Problemen.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2636450419.jpg" alt="Kostenvoranschlag" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">📋</span></div>
+          <h3>Kostenvoranschlag</h3>
+          <p>Transparente Kostenkalkulation vor Auftragsbeginn — keine versteckten Gebühren, faire Preise.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div style="position:relative;overflow:hidden;height:220px;">
+          <img src="content/company_images/shutterstock_2583769357.jpg" alt="Beratung" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
+        </div>
+        <div style="padding:24px;">
+          <div class="icon-circle mb-4"><span aria-hidden="true">💬</span></div>
+          <h3>Beratung</h3>
+          <p>Kompetente Fachberatung zur besten technischen Lösung für Ihr Gebäude und Budget.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ÜBER UNS ════════════════════════════ -->
+<section id="ueber-uns" aria-label="Über uns" style="background:var(--cp);padding:100px 24px;overflow:hidden;">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div style="position:relative;height:520px;" class="reveal">
+        <img src="content/company_images/shutterstock_2511956295.jpg" alt="Sanitärinstallateur bei der Arbeit"
+          style="position:absolute;top:0;left:0;width:75%;height:400px;object-fit:cover;border-radius:12px;box-shadow:0 24px 64px rgba(0,0,0,0.4);" />
+        <img src="content/company_images/shutterstock_2619421941.jpg" alt="Heizungsanlage"
+          style="position:absolute;bottom:0;right:0;width:60%;height:300px;object-fit:cover;border-radius:12px;box-shadow:0 24px 64px rgba(0,0,0,0.4);border:4px solid var(--cp);" />
+        <div class="years-badge" style="position:absolute;top:50%;left:62%;transform:translate(-50%,-50%);">
+          <div class="num">30+</div>
+          <div class="lbl">Jahre</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-badge reveal" style="background:rgba(var(--ca-rgb),0.15);border-color:rgba(var(--ca-rgb),0.3);color:var(--cal);">Über Höwel</div>
+        <h2 class="reveal section-title-light mt-4 mb-6" style="font-size:clamp(1.75rem,3.5vw,2.75rem);line-height:1.2;">
+          Seit Jahrzehnten Ihr<br/>verlässlicher Partner in Köln
+        </h2>
+        <div class="dot-divider mb-6 reveal"></div>
+        <p class="reveal mb-5" style="font-family:var(--fb);color:rgba(255,255,255,0.7);line-height:1.8;font-size:1.0625rem;">
+          Die Höwel Sanitär und Heizung GmbH ist ein eingetragener Fachbetrieb mit Sitz in Köln-Nippes. Mit mehr als drei Jahrzehnten Erfahrung betreuen wir Privat- und Gewerbekunden in der ganzen Region Köln und Umgebung.
+        </p>
+        <p class="reveal mb-8" style="font-family:var(--fb);color:rgba(255,255,255,0.65);line-height:1.8;font-size:1.0625rem;">
+          Unser Team aus qualifizierten Monteuren und erfahrenen Fachkräften arbeitet zuverlässig, termingerecht und mit höchstem Anspruch an Qualität — zu fairen Preisen ohne versteckte Kosten.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+          <div class="about-feat reveal">
+            <div class="about-feat-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+            <div><h4>Meisterbetrieb</h4><p>Staatlich zugelassener Fachbetrieb für Gas und Wasser</p></div>
+          </div>
+          <div class="about-feat reveal">
+            <div class="about-feat-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+            <div><h4>Faire Preise</h4><p>Transparente Kostenvoranschläge ohne Überraschungen</p></div>
+          </div>
+          <div class="about-feat reveal">
+            <div class="about-feat-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+            <div><h4>Erfahrenes Team</h4><p>Qualifizierte Fachkräfte mit langjähriger Praxiserfahrung</p></div>
+          </div>
+          <div class="about-feat reveal">
+            <div class="about-feat-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
+            <div><h4>Ganz Köln</h4><p>Alle Stadtteile und angrenzende Gemeinden</p></div>
+          </div>
+        </div>
+
+        <a href="#kontakt" class="btn-primary reveal">
+          Termin vereinbaren
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ LOGO STRIP ════════════════════════════ -->
+<section aria-label="Partner" style="background:var(--cbg2);padding:56px 0;border-top:1px solid var(--cbg3);border-bottom:1px solid var(--cbg3);">
+  <div class="max-w-7xl mx-auto px-6 mb-10 text-center">
+    <p style="font-family:var(--fb);font-size:0.8125rem;color:#9ca3af;letter-spacing:0.1em;text-transform:uppercase;">Zertifizierter Installationspartner führender Hersteller</p>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" aria-hidden="true">
+      <div style="display:flex;align-items:center;gap:56px;flex-shrink:0;">
+        <span class="marquee-name">Viessmann</span><span class="marquee-name">Bosch</span>
+        <span class="marquee-name">Grohe</span><span class="marquee-name">Vaillant</span>
+        <span class="marquee-name">Hansgrohe</span><span class="marquee-name">Buderus</span>
+        <span class="marquee-name">Geberit</span><span class="marquee-name">Wolf</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:56px;flex-shrink:0;">
+        <span class="marquee-name">Viessmann</span><span class="marquee-name">Bosch</span>
+        <span class="marquee-name">Grohe</span><span class="marquee-name">Vaillant</span>
+        <span class="marquee-name">Hansgrohe</span><span class="marquee-name">Buderus</span>
+        <span class="marquee-name">Geberit</span><span class="marquee-name">Wolf</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ BEWERTUNGEN ════════════════════════════ -->
+<section id="bewertungen" aria-label="Kundenbewertungen" style="background:var(--cbg);padding:100px 24px;">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="section-badge reveal">Was Kunden sagen</div>
+      <h2 class="reveal section-title mb-4" style="font-size:clamp(2rem,4vw,3rem);">Unsere Kundenstimmen</h2>
+      <div class="reveal flex justify-center items-center gap-3 mb-4">
+        <div style="display:flex;gap:4px;" aria-label="4 von 5 Sternen">
+          <span style="color:#f59e0b;font-size:1.5rem;">★★★★</span><span style="color:#d1d5db;font-size:1.5rem;">★</span>
+        </div>
+        <span style="font-family:var(--fb);color:#6b7280;font-size:0.9375rem;">3.716+ Bewertungen auf Google</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- Col 1 -->
+      <div class="flex flex-col gap-5">
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Betreut unsere Baustelle schon über ein halbes Jahr. Trotz Corona-Ausfälle und Lieferschwierigkeiten haben wir immer eine Lösung gefunden."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--ca));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">P</div>
+            <div><div class="author-name">Philip Horst</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Sehr guter Service mit fairen Preisen. Wirklich sehr nette und hilfsbereite Mitarbeiter."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp),var(--cam));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">E</div>
+            <div><div class="author-name">Erdem Kaya</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Gute Arbeit. Höflicher netter Monteur."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--ca));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">M</div>
+            <div><div class="author-name">Manuela Wieland</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Col 2 -->
+      <div class="flex flex-col gap-5" style="margin-top:32px;">
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Beste für Sanitär in meiner Gegend. Schnell und top Preise."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp),var(--cad));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">C</div>
+            <div><div class="author-name">Carsten Schmitt</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Gute Monteure, freundliche Mitarbeiterin am Telefon, gute Arbeit."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--cal));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">A</div>
+            <div><div class="author-name">Armin Schneider</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;" aria-label="4 Sterne">
+            <span style="color:#f59e0b;">★★★★</span><span style="color:#d1d5db;">★</span>
+          </div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Termintreue, tolles Preis-Leistungsverhältnis, sauber. Rundum sehr zufrieden."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp),var(--cam));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">G</div>
+            <div><div class="author-name">Georg Hoffmann</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Col 3 -->
+      <div class="flex flex-col gap-5">
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Top Truppe. Immer zuverlässig und professionell."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--ca));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">D</div>
+            <div><div class="author-name">D. Wenz</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Schnelle Reaktionszeit, saubere Arbeit, faire Abrechnung. Sehr empfehlenswert."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp),var(--cad));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">B</div>
+            <div><div class="author-name">Burkhard Schmitz</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+        <article class="testimonial-card reveal">
+          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
+          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Kompetente Beratung und einwandfreie Ausführung. Pünktlich, sauber, tadellos."</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--cal));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">D</div>
+            <div><div class="author-name">David Geske</div><div class="author-src">Google Rezension</div></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA BAND ════════════════════════════ -->
+<section class="cta-band" aria-label="Handlungsaufforderung" style="padding:72px 24px;">
+  <div style="position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,0.07);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none;"></div>
+  <div class="max-w-4xl mx-auto text-center" style="position:relative;z-index:1;">
+    <h2 class="reveal section-title-light mb-4" style="font-size:clamp(1.75rem,4vw,2.75rem);">Brauchen Sie einen zuverlässigen Fachbetrieb?</h2>
+    <p class="reveal mb-8" style="font-family:var(--fb);color:rgba(255,255,255,0.8);font-size:1.125rem;line-height:1.75;max-width:560px;margin-left:auto;margin-right:auto;">
+      Rufen Sie uns an oder schreiben Sie uns — wir melden uns schnell zurück.
+    </p>
+    <div class="reveal flex flex-wrap justify-center gap-4">
+      <a href="tel:02217486350" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--cad);font-family:var(--fb);font-weight:700;font-size:1rem;padding:16px 32px;border-radius:4px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.2);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 48px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.2)'">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        0221 748635
+      </a>
+      <a href="#kontakt" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:var(--fb);font-weight:600;font-size:1rem;padding:16px 32px;border-radius:4px;text-decoration:none;border:2px solid rgba(255,255,255,0.7);transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.15)';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='';this.style.transform=''">
+        Formular ausfüllen →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ KONTAKT ════════════════════════════ -->
+<section id="kontakt" aria-label="Kontakt" style="background:var(--cbg);padding:100px 24px;">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <div>
+        <div class="section-badge reveal">Kontakt aufnehmen</div>
+        <h2 class="reveal section-title mt-4 mb-4" style="font-size:clamp(1.75rem,3.5vw,2.75rem);">Wir freuen uns<br/>auf Ihre Anfrage</h2>
+        <div class="dot-divider mb-8 reveal"></div>
+
+        <div class="flex flex-col gap-6 mb-10">
+          <div class="reveal flex items-start gap-5">
+            <div class="icon-circle contact-icon" style="flex-shrink:0;">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <h3 style="font-family:var(--fh);font-weight:600;font-size:1.0625rem;color:var(--cp);margin-bottom:4px;">Adresse</h3>
+              <p style="font-family:var(--fb);font-size:0.9375rem;color:#6b7280;line-height:1.7;">Neue Kempener Str. 251a<br/>50739 Köln</p>
+            </div>
+          </div>
+          <div class="reveal flex items-start gap-5">
+            <div class="icon-circle contact-icon" style="flex-shrink:0;">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+              <h3 style="font-family:var(--fh);font-weight:600;font-size:1.0625rem;color:var(--cp);margin-bottom:4px;">Telefon</h3>
+              <a href="tel:02217486350" style="font-family:var(--fb);font-size:1.125rem;color:var(--ca);font-weight:600;text-decoration:none;">0221 748635</a>
+            </div>
+          </div>
+          <div class="reveal flex items-start gap-5">
+            <div class="icon-circle contact-icon" style="flex-shrink:0;">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h3 style="font-family:var(--fh);font-weight:600;font-size:1.0625rem;color:var(--cp);margin-bottom:8px;">Öffnungszeiten</h3>
+              <table style="font-family:var(--fb);font-size:0.875rem;color:#6b7280;border-collapse:collapse;">
+                <tr><td style="padding-right:24px;padding-bottom:4px;">Dienstag – Freitag</td><td style="color:#374151;font-weight:500;">08:00 – 17:00</td></tr>
+                <tr><td style="padding-right:24px;padding-bottom:4px;">Montag</td><td style="color:#374151;font-weight:500;">Auf Anfrage</td></tr>
+                <tr><td style="padding-right:24px;">Samstag / Sonntag</td><td style="color:#9ca3af;">Geschlossen</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" style="border-radius:12px;overflow:hidden;height:220px;box-shadow:0 4px 24px rgba(var(--cp-rgb),0.12);">
+          <iframe title="Standort Höwel Sanitär und Heizung GmbH" width="100%" height="100%" frameborder="0" loading="lazy"
+            style="border:0;filter:sepia(30%) hue-rotate(180deg) saturate(0.7);"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=6.9292%2C50.9709%2C6.9392%2C50.9759&layer=mapnik&marker=50.9734%2C6.9342"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="reveal" style="background:#fff;border-radius:16px;padding:40px;box-shadow:0 8px 48px rgba(var(--cp-rgb),0.1),0 2px 12px rgba(var(--cp-rgb),0.06);">
+        <h3 style="font-family:var(--fh);font-weight:700;font-size:1.5rem;color:var(--cp);letter-spacing:-0.02em;margin-bottom:8px;">Nachricht senden</h3>
+        <p style="font-family:var(--fb);font-size:0.875rem;color:#9ca3af;margin-bottom:28px;">Wir antworten in der Regel innerhalb von 24 Stunden.</p>
+        <form action="#" method="POST" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="name" style="display:block;font-family:var(--fb);font-size:0.8125rem;font-weight:500;color:#374151;margin-bottom:6px;">Vor- und Nachname *</label>
+              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Max Mustermann" class="form-input" />
+            </div>
+            <div>
+              <label for="phone" style="display:block;font-family:var(--fb);font-size:0.8125rem;font-weight:500;color:#374151;margin-bottom:6px;">Telefon</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="0221 ..." class="form-input" />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="email" style="display:block;font-family:var(--fb);font-size:0.8125rem;font-weight:500;color:#374151;margin-bottom:6px;">E-Mail-Adresse *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="ihre@email.de" class="form-input" />
+          </div>
+          <div class="mb-4">
+            <label for="service" style="display:block;font-family:var(--fb);font-size:0.8125rem;font-weight:500;color:#374151;margin-bottom:6px;">Betreff</label>
+            <select id="service" name="service" class="form-input" style="cursor:pointer;">
+              <option value="">Bitte wählen...</option>
+              <option value="sanitaer">Sanitärinstallation</option>
+              <option value="heizung">Heizungsinstallation</option>
+              <option value="badsanierung">Badsanierung</option>
+              <option value="wartung">Wartung & Reparatur</option>
+              <option value="notdienst">Notdienst</option>
+              <option value="sonstiges">Sonstiges</option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label for="message" style="display:block;font-family:var(--fb);font-size:0.8125rem;font-weight:500;color:#374151;margin-bottom:6px;">Ihre Nachricht *</label>
+            <textarea id="message" name="message" required rows="4" placeholder="Beschreiben Sie kurz Ihr Anliegen..." class="form-input" style="resize:vertical;min-height:120px;"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+            Nachricht senden
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ════════════════════════════ -->
+<footer aria-label="Footer" style="background:var(--cp);padding:64px 24px 32px;">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 pb-12" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-5">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--ca);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;font-size:1.25rem;">H</div>
+          <div>
+            <span style="display:block;font-family:var(--fh);font-weight:700;font-size:1.25rem;color:#fff;letter-spacing:-0.02em;">Höwel</span>
+            <span style="display:block;font-family:var(--fb);font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">Sanitär & Heizung GmbH</span>
+          </div>
+        </div>
+        <p style="font-family:var(--fb);font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.8;max-width:360px;margin-bottom:20px;">
+          Ihr zuverlässiger Fachbetrieb für Sanitär- und Heizungsinstallation in Köln und Umgebung. Faire Preise, kompetente Monteure, seit Jahrzehnten im Dienst der Region.
+        </p>
+      </div>
+      <div>
+        <h4 style="font-family:var(--fh);font-weight:600;font-size:1rem;color:#fff;margin-bottom:20px;">Leistungen</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="#leistungen" class="footer-link">Sanitärinstallation</a></li>
+          <li><a href="#leistungen" class="footer-link">Heizungsinstallation</a></li>
+          <li><a href="#leistungen" class="footer-link">Badsanierung</a></li>
+          <li><a href="#leistungen" class="footer-link">Wartung & Reparatur</a></li>
+          <li><a href="#leistungen" class="footer-link">Fußbodenheizung</a></li>
+          <li><a href="#leistungen" class="footer-link">Notdienst</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family:var(--fh);font-weight:600;font-size:1rem;color:#fff;margin-bottom:20px;">Kontakt</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+          <li style="font-family:var(--fb);font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.6;">Neue Kempener Str. 251a<br/>50739 Köln</li>
+          <li><a href="tel:02217486350" class="footer-link" style="font-size:1rem;font-weight:600;color:var(--cal);">0221 748635</a></li>
+          <li style="font-family:var(--fb);font-size:0.8125rem;color:rgba(255,255,255,0.4);">Di – Fr: 08:00 – 17:00 Uhr</li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+      <p style="font-family:var(--fb);font-size:0.8125rem;color:rgba(255,255,255,0.3);">© 2024 Höwel Sanitär und Heizung GmbH. Alle Rechte vorbehalten.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="#" class="footer-link" style="font-size:0.8125rem;">Impressum</a>
+        <a href="#" class="footer-link" style="font-size:0.8125rem;">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════ STYLE SWITCHER ════════════════════════════ -->
+<button id="style-toggle" aria-label="Design-Varianten" title="Design anpassen">
+  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+  </svg>
+</button>
+
+<div id="style-panel" role="dialog" aria-label="Design-Einstellungen" aria-modal="false">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+    <span class="sp-title">Design anpassen</span>
+    <button id="style-close" style="border:none;background:none;cursor:pointer;color:#888;font-size:1.2rem;line-height:1;padding:4px;" aria-label="Schließen">✕</button>
+  </div>
+
+  <span class="sp-label">Farbschema</span>
+  <div class="color-swatches" id="color-swatches">
+    <!-- Injected by JS -->
+  </div>
+
+  <div class="sp-divider"></div>
+
+  <span class="sp-label">Schriftart</span>
+  <div class="font-list" id="font-list">
+    <!-- Injected by JS -->
+  </div>
+</div>
+
+<!-- ═══════════════════════ JAVASCRIPT ════════════════════════════ -->
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Nav scroll ──────────────────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── Mobile menu ──────────────────────────────────────────────
+  const burgerBtn  = document.getElementById('burger-btn');
+  const closeBtn   = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const burgerLines = document.querySelectorAll('.burger-line');
+  function openMenu() {
+    mobileMenu.classList.add('open'); burgerBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+    burgerLines[0].style.cssText='transform:translateY(8px) rotate(45deg)';
+    burgerLines[1].style.cssText='opacity:0;transform:scaleX(0)';
+    burgerLines[2].style.cssText='transform:translateY(-8px) rotate(-45deg)';
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open'); burgerBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+    burgerLines[0].style.cssText=''; burgerLines[1].style.cssText=''; burgerLines[2].style.cssText='';
+  }
+  burgerBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('.mobile-nav-link, .btn-primary').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key==='Escape') { closeMenu(); closeStylePanel(); } });
+
+  // ── Tabs ─────────────────────────────────────────────────────
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+      const panel = document.getElementById('panel-' + target);
+      panel.classList.add('active');
+      gsap.from(panel.children, { opacity:0, y:24, stagger:0.08, duration:0.45, ease:'power2.out' });
+    });
+  });
+
+  // ── GSAP scroll-reveal ────────────────────────────────────────
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.set(el, { opacity:0, y:36 });
+    ScrollTrigger.create({
+      trigger: el, start: 'top 88%', once: true,
+      onEnter: () => gsap.to(el, { opacity:1, y:0, duration:0.65, ease:'power2.out' })
+    });
+  });
+  document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+    gsap.set(el, { opacity:0, y:32 });
+    gsap.to(el, { opacity:1, y:0, duration:0.8, delay:0.3 + i * 0.15, ease:'power2.out' });
+  });
+
+  // ════════════════════════════════════════════════
+  //  STYLE SWITCHER
+  // ════════════════════════════════════════════════
+
+  const THEMES = [
+    { id:'marine',    name:'Marine',    cp:'#0c1f33', cpR:'12,31,51',    cp2:'#163255', ca:'#d4772d', caR:'212,119,45',  cad:'#b86a2a', cadR:'184,106,42', cam:'#e88c44', cal:'#f4a469', cbg:'#f8f5f0', cbg2:'#f0ebe3', cbg3:'#e2d8cc' },
+    { id:'forest',    name:'Forest',    cp:'#142b1f', cpR:'20,43,31',    cp2:'#1e4030', ca:'#c9a227', caR:'201,162,39',  cad:'#a88520', cadR:'168,133,32', cam:'#dbb840', cal:'#e8c050', cbg:'#f5f5ef', cbg2:'#ecebe2', cbg3:'#dddccc' },
+    { id:'graphite',  name:'Graphite',  cp:'#1c2028', cpR:'28,32,40',    cp2:'#252d3a', ca:'#2a9d8f', caR:'42,157,143', cad:'#1f7a6e', cadR:'31,122,110', cam:'#40b5a8', cal:'#5bbfb4', cbg:'#f4f5f6', cbg2:'#e9ebec', cbg3:'#d4d8db' },
+    { id:'midnight',  name:'Midnight',  cp:'#16063a', cpR:'22,6,58',     cp2:'#220a58', ca:'#f59e0b', caR:'245,158,11', cad:'#d97706', cadR:'217,119,6',  cam:'#fbbf24', cal:'#fcd34d', cbg:'#faf8ff', cbg2:'#ede8fb', cbg3:'#ddd5f4' },
+    { id:'ember',     name:'Ember',     cp:'#1f110a', cpR:'31,17,10',    cp2:'#2e180e', ca:'#e07040', caR:'224,112,64', cad:'#c0562a', cadR:'192,86,42',  cam:'#f09070', cal:'#f4a880', cbg:'#faf6f2', cbg2:'#f0e8e0', cbg3:'#e0cec0' },
+    { id:'steel',     name:'Steel',     cp:'#0e1c2e', cpR:'14,28,46',    cp2:'#152840', ca:'#3b82f6', caR:'59,130,246', cad:'#2563eb', cadR:'37,99,235',  cam:'#60a5fa', cal:'#93c5fd', cbg:'#f4f6fb', cbg2:'#e8edf8', cbg3:'#d0d9f0' },
+    { id:'stone',     name:'Stone',     cp:'#1f1b16', cpR:'31,27,22',    cp2:'#2d2820', ca:'#b5451b', caR:'181,69,27',  cad:'#8b3416', cadR:'139,52,22',  cam:'#d06030', cal:'#e08050', cbg:'#f8f5f0', cbg2:'#f0ebe2', cbg3:'#e0d4c8' },
+    { id:'pine',      name:'Pine',      cp:'#0e2318', cpR:'14,35,24',    cp2:'#163524', ca:'#cc8a1a', caR:'204,138,26', cad:'#a36e14', cadR:'163,110,20', cam:'#e0a030', cal:'#e8b84a', cbg:'#f5f7f4', cbg2:'#e8ede4', cbg3:'#d4ddd0' },
+  ];
+
+  const FONTS = [
+    { id:'inter',     name:'Inter + Playfair',          fb:"'Inter', sans-serif",                fh:"'Playfair Display', serif",      preview:'Aa — klassisch elegant' },
+    { id:'poppins',   name:'Poppins + Merriweather',     fb:"'Poppins', sans-serif",              fh:"'Merriweather', serif",           preview:'Aa — modern & lesbar' },
+    { id:'raleway',   name:'Raleway + Cormorant',        fb:"'Raleway', sans-serif",              fh:"'Cormorant Garamond', serif",     preview:'Aa — filigran & edel' },
+    { id:'montserrat',name:'Montserrat + Libre',         fb:"'Montserrat', sans-serif",           fh:"'Libre Baskerville', serif",      preview:'Aa — klar & professionell' },
+    { id:'dmsans',    name:'DM Sans + DM Serif',         fb:"'DM Sans', sans-serif",              fh:"'DM Serif Display', serif",       preview:'Aa — dezent & harmonisch' },
+    { id:'nunito',    name:'Nunito + Lora',              fb:"'Nunito', sans-serif",               fh:"'Lora', serif",                   preview:'Aa — freundlich & warm' },
+    { id:'outfit',    name:'Outfit + Fraunces',          fb:"'Outfit', sans-serif",               fh:"'Fraunces', serif",               preview:'Aa — zeitgemäß & kühn' },
+    { id:'jakarta',   name:'Plus Jakarta + Instrument',  fb:"'Plus Jakarta Sans', sans-serif",    fh:"'Instrument Serif', serif",       preview:'Aa — urban & frisch' },
+    { id:'worksans',  name:'Work Sans + Yeseva One',     fb:"'Work Sans', sans-serif",            fh:"'Yeseva One', serif",             preview:'Aa — stark & markant' },
+    { id:'mulish',    name:'Mulish + Domine',            fb:"'Mulish', sans-serif",               fh:"'Domine', serif",                 preview:'Aa — schlank & technisch' },
+  ];
+
+  let activeTheme = 'marine';
+  let activeFont  = 'inter';
+
+  function applyTheme(t) {
+    const r = document.documentElement.style;
+    r.setProperty('--cp',   t.cp);
+    r.setProperty('--cp-rgb', t.cpR);
+    r.setProperty('--cp2',  t.cp2);
+    r.setProperty('--ca',   t.ca);
+    r.setProperty('--ca-rgb', t.caR);
+    r.setProperty('--cad',  t.cad);
+    r.setProperty('--cad-rgb', t.cadR);
+    r.setProperty('--cam',  t.cam);
+    r.setProperty('--cal',  t.cal);
+    r.setProperty('--cbg',  t.cbg);
+    r.setProperty('--cbg2', t.cbg2);
+    r.setProperty('--cbg3', t.cbg3);
+    activeTheme = t.id;
+    document.querySelectorAll('.swatch').forEach(s => {
+      s.classList.toggle('active', s.dataset.theme === t.id);
+    });
+  }
+
+  function applyFont(f) {
+    const r = document.documentElement.style;
+    r.setProperty('--fh', f.fh);
+    r.setProperty('--fb', f.fb);
+    activeFont = f.id;
+    document.querySelectorAll('.font-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.font === f.id);
+    });
+  }
+
+  // Build swatches
+  const swatchContainer = document.getElementById('color-swatches');
+  THEMES.forEach(t => {
+    const s = document.createElement('button');
+    s.className = 'swatch' + (t.id === activeTheme ? ' active' : '');
+    s.dataset.theme = t.id;
+    s.title = t.name;
+    s.setAttribute('aria-label', t.name);
+    s.innerHTML = `<div class="swatch-top" style="background:${t.cp};"></div><div class="swatch-bottom" style="background:${t.ca};"></div><div class="swatch-name">${t.name}</div>`;
+    s.addEventListener('click', () => applyTheme(t));
+    swatchContainer.appendChild(s);
+  });
+
+  // Build font buttons
+  const fontContainer = document.getElementById('font-list');
+  FONTS.forEach(f => {
+    const b = document.createElement('button');
+    b.className = 'font-btn' + (f.id === activeFont ? ' active' : '');
+    b.dataset.font = f.id;
+    b.setAttribute('aria-label', f.name);
+    b.innerHTML = `<span class="font-btn-name" style="font-family:${f.fh};">${f.name}</span><span class="font-btn-preview" style="font-family:${f.fb};">${f.preview}</span>`;
+    b.addEventListener('click', () => applyFont(f));
+    fontContainer.appendChild(b);
+  });
+
+  // Toggle panel
+  const toggleBtn   = document.getElementById('style-toggle');
+  const panel       = document.getElementById('style-panel');
+  const styleClose  = document.getElementById('style-close');
+  let panelOpen = false;
+
+  function openStylePanel()  { panel.classList.add('open');    panelOpen = true;  toggleBtn.style.transform='rotate(15deg) scale(1.1)'; }
+  function closeStylePanel() { panel.classList.remove('open'); panelOpen = false; toggleBtn.style.transform=''; }
+
+  toggleBtn.addEventListener('click', () => panelOpen ? closeStylePanel() : openStylePanel());
+  styleClose.addEventListener('click', closeStylePanel);
+  document.addEventListener('click', e => {
+    if (panelOpen && !panel.contains(e.target) && e.target !== toggleBtn) closeStylePanel();
+  });
+</script>
+
+</body>
+</html>

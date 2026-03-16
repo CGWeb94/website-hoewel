@@ -1,0 +1,5 @@
+# Auto-generated – update when known
+Domain:         [hoewel-sanitaer.de]
+GitHub-Repo:    github.com/CGWeb94/website-hoewel
+Vercel-Projekt: website-hoewel
+Canonical-URL:  https://website-hoewel.vercel.app
