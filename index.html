@@ -118,8 +118,8 @@
     .tab-btn.active::after { left:20%;right:20%; }
     .tab-btn:hover:not(.active) { color:var(--cp); }
     .tab-btn:focus-visible { outline:3px solid var(--ca);outline-offset:2px;border-radius:2px; }
-    .tab-panel { display:none; }
-    .tab-panel.active { display:grid; }
+    .tab-panel { display:none !important; }
+    .tab-panel.active { display:grid !important; }
 
     /* ── SERVICE CARD ────────────────────────────────────── */
     .service-card {
@@ -131,13 +131,34 @@
     .service-card h3 { font-family:var(--fh);font-size:1.25rem;font-weight:700;color:var(--cp);letter-spacing:-0.02em;margin-bottom:8px; }
     .service-card p  { font-family:var(--fb);font-size:0.9rem;color:#6b7280;line-height:1.7; }
 
-    /* ── TESTIMONIAL ─────────────────────────────────────── */
-    .testimonial-card {
-      background:#fff;border-radius:12px;padding:24px;
-      box-shadow:0 2px 20px rgba(var(--cp-rgb),0.07),0 1px 4px rgba(var(--cp-rgb),0.04);
-    }
-    .testimonial-card .author-name { font-family:var(--fb);font-weight:600;font-size:0.875rem;color:#1a1a1a; }
-    .testimonial-card .author-src  { font-family:var(--fb);font-size:0.75rem;color:#9ca3af; }
+    /* ── TESTIMONIALS COLUMNS ───────────────────────────────── */
+    .testi-outer { position:relative;height:680px;overflow:hidden; }
+    .testi-outer::before,.testi-outer::after { content:'';position:absolute;left:0;right:0;z-index:2;height:130px;pointer-events:none; }
+    .testi-outer::before { top:0;background:linear-gradient(to bottom,var(--cbg),transparent); }
+    .testi-outer::after  { bottom:0;background:linear-gradient(to top,var(--cbg),transparent); }
+    .testi-grid { display:grid;grid-template-columns:1fr;gap:16px;height:100%; }
+    @media(min-width:768px)  { .testi-grid { grid-template-columns:1fr 1fr; } }
+    @media(min-width:1024px) { .testi-grid { grid-template-columns:1fr 1fr 1fr; } }
+    .testi-col { overflow:hidden; }
+    .testi-col-md { display:none; }
+    .testi-col-lg { display:none; }
+    @media(min-width:768px)  { .testi-col-md { display:block; } }
+    @media(min-width:1024px) { .testi-col-lg { display:block; } }
+    .testi-track { display:flex;flex-direction:column;gap:14px; }
+    .testi-track-1 { animation:testi-up 17s linear infinite; }
+    .testi-track-2 { animation:testi-up 22s linear infinite; }
+    .testi-track-3 { animation:testi-up 14s linear infinite; }
+    .testi-track:hover { animation-play-state:paused; }
+    @keyframes testi-up { from{transform:translateY(0)} to{transform:translateY(-50%)} }
+    .testi-card { background:#fff;border-radius:16px;padding:20px 22px;flex-shrink:0;
+      box-shadow:0 2px 20px rgba(var(--cp-rgb),0.06),0 1px 4px rgba(var(--cp-rgb),0.04);
+      border:1px solid rgba(var(--cp-rgb),0.07); }
+    .testi-stars { color:#f59e0b;font-size:0.8rem;letter-spacing:2px;margin-bottom:10px; }
+    .testi-text  { font-family:var(--fb);font-size:0.9rem;color:#374151;line-height:1.72;margin-bottom:14px; }
+    .testi-author { display:flex;align-items:center;gap:10px; }
+    .testi-avatar { width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;font-size:0.875rem;color:#fff;flex-shrink:0; }
+    .testi-name { font-family:var(--fb);font-weight:600;font-size:0.8125rem;color:#111; }
+    .testi-src  { font-family:var(--fb);font-size:0.7rem;color:#9ca3af; }
 
     /* ── MARQUEE ─────────────────────────────────────────── */
     .marquee-wrap { overflow:hidden;position:relative; }
@@ -571,105 +592,43 @@
   </div>
 </section>
 
-<!-- ═══════════════════════ BEWERTUNGEN ════════════════════════════ -->
+<!-- ═══════════════════════ BEWERTUNGEN ════════════════════════ -->
 <section id="bewertungen" aria-label="Kundenbewertungen" style="background:var(--cbg);padding:100px 24px;">
   <div class="max-ctr">
-    <div class="text-center mb-14">
+    <div class="text-center mb-12">
       <div class="section-badge reveal">Was Kunden sagen</div>
       <h2 class="reveal section-title mb-4" style="font-size:clamp(2rem,4vw,3rem);">Unsere Kundenstimmen</h2>
-      <div class="reveal flex justify-center items-center gap-3 mb-4">
-        <div style="display:flex;gap:4px;" aria-label="4 von 5 Sternen">
-          <span style="color:#f59e0b;font-size:1.5rem;">★★★★</span><span style="color:#d1d5db;font-size:1.5rem;">★</span>
-        </div>
+      <div class="reveal flex justify-center items-center gap-3">
+        <span style="color:#f59e0b;font-size:1.25rem;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;</span><span style="color:#d1d5db;font-size:1.25rem;">&#9733;</span>
         <span style="font-family:var(--fb);color:#6b7280;font-size:0.9375rem;">3.716+ Bewertungen auf Google</span>
       </div>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <!-- Col 1 -->
-      <div class="flex flex-col gap-5">
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Betreut unsere Baustelle schon über ein halbes Jahr. Trotz Corona-Ausfälle und Lieferschwierigkeiten haben wir immer eine Lösung gefunden."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--ca));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">P</div>
-            <div><div class="author-name">Philip Horst</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Sehr guter Service mit fairen Preisen. Wirklich sehr nette und hilfsbereite Mitarbeiter."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp),var(--cam));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">E</div>
-            <div><div class="author-name">Erdem Kaya</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Gute Arbeit. Höflicher netter Monteur."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--ca));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">M</div>
-            <div><div class="author-name">Manuela Wieland</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
-      </div>
-
-      <!-- Col 2 -->
-      <div class="flex flex-col gap-5" style="margin-top:32px;">
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Beste für Sanitär in meiner Gegend. Schnell und top Preise."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp),var(--cad));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">C</div>
-            <div><div class="author-name">Carsten Schmitt</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Gute Monteure, freundliche Mitarbeiterin am Telefon, gute Arbeit."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--cal));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">A</div>
-            <div><div class="author-name">Armin Schneider</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;" aria-label="4 Sterne">
-            <span style="color:#f59e0b;">★★★★</span><span style="color:#d1d5db;">★</span>
-          </div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Termintreue, tolles Preis-Leistungsverhältnis, sauber. Rundum sehr zufrieden."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp),var(--cam));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">G</div>
-            <div><div class="author-name">Georg Hoffmann</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
-      </div>
-
-      <!-- Col 3 -->
-      <div class="flex flex-col gap-5">
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Top Truppe. Immer zuverlässig und professionell."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--ca));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">D</div>
-            <div><div class="author-name">D. Wenz</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Schnelle Reaktionszeit, saubere Arbeit, faire Abrechnung. Sehr empfehlenswert."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp),var(--cad));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">B</div>
-            <div><div class="author-name">Burkhard Schmitz</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
-        <article class="testimonial-card reveal">
-          <div style="display:flex;gap:2px;margin-bottom:12px;color:#f59e0b;" aria-label="5 Sterne">★★★★★</div>
-          <p style="font-family:var(--fb);font-size:0.9375rem;color:#374151;line-height:1.75;margin-bottom:16px;">„Kompetente Beratung und einwandfreie Ausführung. Pünktlich, sauber, tadellos."</p>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cp2),var(--cal));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:#fff;">D</div>
-            <div><div class="author-name">David Geske</div><div class="author-src">Google Rezension</div></div>
-          </div>
-        </article>
+    <div class="testi-outer reveal">
+      <div class="testi-grid">
+        <div class="testi-col"><div class="testi-track testi-track-1" aria-hidden="true">
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Betreut unsere Baustelle schon über ein halbes Jahr. Trotz Corona-Ausfälle und Lieferschwierigkeiten haben wir immer eine Lösung gefunden.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--ca));">P</div><div><div class="testi-name">Philip Horst</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Sehr guter Service mit fairen Preisen. Wirklich sehr nette und hilfsbereite Mitarbeiter.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp),var(--cam));">E</div><div><div class="testi-name">Erdem Kaya</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Gute Arbeit. Höflicher, netter Monteur. Jederzeit wieder.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--cad));">M</div><div><div class="testi-name">Manuela Wieland</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Betreut unsere Baustelle schon über ein halbes Jahr. Trotz Corona-Ausfälle und Lieferschwierigkeiten haben wir immer eine Lösung gefunden.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--ca));">P</div><div><div class="testi-name">Philip Horst</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Sehr guter Service mit fairen Preisen. Wirklich sehr nette und hilfsbereite Mitarbeiter.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp),var(--cam));">E</div><div><div class="testi-name">Erdem Kaya</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Gute Arbeit. Höflicher, netter Monteur. Jederzeit wieder.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--cad));">M</div><div><div class="testi-name">Manuela Wieland</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+        </div></div>
+        <div class="testi-col testi-col-md"><div class="testi-track testi-track-2" aria-hidden="true">
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Beste für Sanitär in meiner Gegend. Schnell und top Preise.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--cad));">C</div><div><div class="testi-name">Carsten Schmitt</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Gute Monteure, freundliche Mitarbeiterin am Telefon, gute Arbeit.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp),var(--cal));">A</div><div><div class="testi-name">Armin Schneider</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;<span style="color:#d1d5db;">&#9733;</span></div><p class="testi-text">„Termintreue, tolles Preis-Leistungsverhältnis, sauber. Rundum sehr zufrieden.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp),var(--cam));">G</div><div><div class="testi-name">Georg Hoffmann</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9734;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Beste für Sanitär in meiner Gegend. Schnell und top Preise.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--cad));">C</div><div><div class="testi-name">Carsten Schmitt</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Gute Monteure, freundliche Mitarbeiterin am Telefon, gute Arbeit.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp),var(--cal));">A</div><div><div class="testi-name">Armin Schneider</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;<span style="color:#d1d5db;">&#9733;</span></div><p class="testi-text">„Termintreue, tolles Preis-Leistungsverhältnis, sauber. Rundum sehr zufrieden.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp),var(--cam));">G</div><div><div class="testi-name">Georg Hoffmann</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9734;</div></div></div></div>
+        </div></div>
+        <div class="testi-col testi-col-lg"><div class="testi-track testi-track-3" aria-hidden="true">
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Top Truppe. Immer zuverlässig und professionell.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--ca));">D</div><div><div class="testi-name">D. Wenz</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Schnelle Reaktionszeit, saubere Arbeit, faire Abrechnung. Sehr empfehlenswert.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--cad));">B</div><div><div class="testi-name">Burkhard Schmitz</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Kompetente Beratung und einwandfreie Ausführung. Pünktlich, sauber, tadellos.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp),var(--cal));">D</div><div><div class="testi-name">David Geske</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Top Truppe. Immer zuverlässig und professionell.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--ca));">D</div><div><div class="testi-name">D. Wenz</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Schnelle Reaktionszeit, saubere Arbeit, faire Abrechnung. Sehr empfehlenswert.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp2),var(--cad));">B</div><div><div class="testi-name">Burkhard Schmitz</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+          <div class="testi-card"><div class="testi-stars" style="color:#f59e0b;">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">„Kompetente Beratung und einwandfreie Ausführung. Pünktlich, sauber, tadellos.“</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--cp),var(--cal));">D</div><div><div class="testi-name">David Geske</div><div class="testi-src">Google · &#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div></div>
+        </div></div>
       </div>
     </div>
   </div>
