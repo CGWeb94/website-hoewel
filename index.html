@@ -48,7 +48,7 @@
       --cbg2:    #f0ebe3;
       --cbg3:    #e2d8cc;
       /* Fonts */
-      --fh: 'Playfair Display', Georgia, serif;
+      --fh: 'Poppins', sans-serif;
       --fb: 'Inter', system-ui, sans-serif;
     }
 
@@ -62,6 +62,8 @@
       opacity: 0.025;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
+
+    .max-ctr { max-width:85rem; margin-left:auto; margin-right:auto; }
 
     /* ── NAV ─────────────────────────────────────────────── */
     #nav { position:fixed;top:0;left:0;right:0;z-index:900;transition:background 0.4s,box-shadow 0.4s,backdrop-filter 0.4s; }
@@ -142,10 +144,8 @@
     .marquee-wrap::before,.marquee-wrap::after { content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2; }
     .marquee-wrap::before { left:0;background:linear-gradient(to right,var(--cbg2),transparent); }
     .marquee-wrap::after  { right:0;background:linear-gradient(to left, var(--cbg2),transparent); }
-    .marquee-track { display:flex;align-items:center;gap:56px;animation:marquee 28s linear infinite;width:max-content; }
-    .marquee-track:hover { animation-play-state:paused; }
-    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    .marquee-name { font-family:var(--fh);font-size:1.5rem;font-weight:600;color:#9ca3af;letter-spacing:-0.02em; }
+    .marquee-track { display:flex;align-items:center;gap:64px;width:max-content;will-change:transform; }
+    .marquee-name { font-family:var(--fh);font-size:1.85rem;font-weight:700;color:#b0b8c4;letter-spacing:-0.03em; }
 
     /* ── FORM ────────────────────────────────────────────── */
     .form-input {
@@ -225,7 +225,7 @@
 
 <!-- ═══════════════════════ NAVIGATION ════════════════════════════ -->
 <nav id="nav" aria-label="Hauptnavigation">
-  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+  <div class="max-ctr px-6 flex items-center justify-between h-20">
     <a href="#" class="flex items-center gap-3 z-10" aria-label="Höwel Startseite">
       <div class="flex items-center justify-center w-10 h-10 rounded-full text-white font-bold text-lg" style="background:var(--ca);font-family:var(--fh);">H</div>
       <div>
@@ -280,7 +280,7 @@
   </div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(var(--ca-rgb),0.18) 0%,transparent 65%),radial-gradient(ellipse 60% 80% at 85% 20%,rgba(var(--cp-rgb),0.6) 0%,transparent 70%);z-index:2;pointer-events:none;"></div>
 
-  <div class="max-w-7xl mx-auto px-6 w-full pt-24 pb-16" style="position:relative;z-index:3;">
+  <div class="max-ctr px-6 w-full pt-24 pb-16" style="position:relative;z-index:3;">
     <div class="max-w-2xl">
       <div class="section-badge reveal" style="background:rgba(var(--ca-rgb),0.2);border-color:rgba(var(--ca-rgb),0.4);color:var(--cal);">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
@@ -332,8 +332,8 @@
 </section>
 
 <!-- ═══════════════════════ STATS BAR ════════════════════════════ -->
-<section aria-label="Kennzahlen" style="background:var(--cbg);padding:0 24px;">
-  <div class="max-w-7xl mx-auto" style="transform:translateY(-48px);">
+<section aria-label="Kennzahlen" style="background:var(--cbg);padding:48px 24px 0;position:relative;z-index:2;margin-top:-48px;">
+  <div class="max-ctr">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="stat-card reveal text-center">
         <div class="stat-num" aria-label="3.716 Bewertungen">3.716</div>
@@ -363,7 +363,7 @@
 
 <!-- ═══════════════════════ LEISTUNGEN ════════════════════════════ -->
 <section id="leistungen" aria-label="Leistungen" style="background:var(--cbg);padding:80px 24px 100px;">
-  <div class="max-w-7xl mx-auto">
+  <div class="max-ctr">
     <div class="text-center mb-14">
       <div class="section-badge reveal">Unsere Leistungen</div>
       <h2 class="reveal section-title mb-4" style="font-size:clamp(2rem,4vw,3rem);">Was wir für Sie tun</h2>
@@ -379,10 +379,10 @@
     </div>
 
     <!-- Sanitär Panel -->
-    <div id="panel-sanitaer" class="tab-panel active grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-sanitaer">
+    <div id="panel-sanitaer" class="tab-panel active grid gap-x-6 gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-sanitaer">
       <div class="service-card">
         <div style="position:relative;overflow:hidden;height:220px;">
-          <img src="content/company_images/shutterstock_2521741507.jpg" alt="Badsanierung" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <img src="content/company_images/shutterstock_2274676623.jpg" alt="Badsanierung vorher nachher" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
         </div>
         <div style="padding:24px;">
@@ -393,7 +393,7 @@
       </div>
       <div class="service-card">
         <div style="position:relative;overflow:hidden;height:220px;">
-          <img src="content/company_images/shutterstock_2556203029.jpg" alt="Rohrinstallation" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <img src="content/company_images/shutterstock_2540229083.jpg" alt="Rohrinstallation" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
         </div>
         <div style="padding:24px;">
@@ -404,7 +404,7 @@
       </div>
       <div class="service-card">
         <div style="position:relative;overflow:hidden;height:220px;">
-          <img src="content/company_images/shutterstock_2458334439.jpg" alt="Sanitärobjekte" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <img src="content/company_images/shutterstock_2433819997.jpg" alt="Sanitärobjekte" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
         </div>
         <div style="padding:24px;">
@@ -416,10 +416,10 @@
     </div>
 
     <!-- Heizung Panel -->
-    <div id="panel-heizung" class="tab-panel grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-heizung">
+    <div id="panel-heizung" class="tab-panel grid gap-x-6 gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-heizung">
       <div class="service-card">
         <div style="position:relative;overflow:hidden;height:220px;">
-          <img src="content/company_images/shutterstock_2497077479.jpg" alt="Heizungsinstallation" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <img src="content/company_images/shutterstock_2607536333.jpg" alt="Heizungsinstallation" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
         </div>
         <div style="padding:24px;">
@@ -430,7 +430,7 @@
       </div>
       <div class="service-card">
         <div style="position:relative;overflow:hidden;height:220px;">
-          <img src="content/company_images/shutterstock_2465946405.jpg" alt="Wartung & Reparatur" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <img src="content/company_images/shutterstock_2531029991.jpg" alt="Wartung & Reparatur" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
         </div>
         <div style="padding:24px;">
@@ -441,7 +441,7 @@
       </div>
       <div class="service-card">
         <div style="position:relative;overflow:hidden;height:220px;">
-          <img src="content/company_images/shutterstock_2526926309.jpg" alt="Fußbodenheizung" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <img src="content/company_images/shutterstock_2583769357.jpg" alt="Fußbodenheizung" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
         </div>
         <div style="padding:24px;">
@@ -453,10 +453,10 @@
     </div>
 
     <!-- Service Panel -->
-    <div id="panel-service" class="tab-panel grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-service">
+    <div id="panel-service" class="tab-panel grid gap-x-6 gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel" aria-labelledby="tab-service">
       <div class="service-card">
         <div style="position:relative;overflow:hidden;height:220px;">
-          <img src="content/company_images/shutterstock_2613014373.jpg" alt="Notdienst" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <img src="content/company_images/shutterstock_2465946405.jpg" alt="Notdienst" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
         </div>
         <div style="padding:24px;">
@@ -478,7 +478,7 @@
       </div>
       <div class="service-card">
         <div style="position:relative;overflow:hidden;height:220px;">
-          <img src="content/company_images/shutterstock_2583769357.jpg" alt="Beratung" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+          <img src="content/company_images/shutterstock_2521741507.jpg" alt="Beratung" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--cp-rgb),0.65) 0%,transparent 60%);"></div>
         </div>
         <div style="padding:24px;">
@@ -493,7 +493,7 @@
 
 <!-- ═══════════════════════ ÜBER UNS ════════════════════════════ -->
 <section id="ueber-uns" aria-label="Über uns" style="background:var(--cp);padding:100px 24px;overflow:hidden;">
-  <div class="max-w-7xl mx-auto">
+  <div class="max-ctr">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
       <div style="position:relative;height:520px;" class="reveal">
@@ -550,7 +550,7 @@
 
 <!-- ═══════════════════════ LOGO STRIP ════════════════════════════ -->
 <section aria-label="Partner" style="background:var(--cbg2);padding:56px 0;border-top:1px solid var(--cbg3);border-bottom:1px solid var(--cbg3);">
-  <div class="max-w-7xl mx-auto px-6 mb-10 text-center">
+  <div class="max-ctr px-6 mb-10 text-center">
     <p style="font-family:var(--fb);font-size:0.8125rem;color:#9ca3af;letter-spacing:0.1em;text-transform:uppercase;">Zertifizierter Installationspartner führender Hersteller</p>
   </div>
   <div class="marquee-wrap">
@@ -573,7 +573,7 @@
 
 <!-- ═══════════════════════ BEWERTUNGEN ════════════════════════════ -->
 <section id="bewertungen" aria-label="Kundenbewertungen" style="background:var(--cbg);padding:100px 24px;">
-  <div class="max-w-7xl mx-auto">
+  <div class="max-ctr">
     <div class="text-center mb-14">
       <div class="section-badge reveal">Was Kunden sagen</div>
       <h2 class="reveal section-title mb-4" style="font-size:clamp(2rem,4vw,3rem);">Unsere Kundenstimmen</h2>
@@ -698,7 +698,7 @@
 
 <!-- ═══════════════════════ KONTAKT ════════════════════════════ -->
 <section id="kontakt" aria-label="Kontakt" style="background:var(--cbg);padding:100px 24px;">
-  <div class="max-w-7xl mx-auto">
+  <div class="max-ctr">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
       <div>
@@ -795,7 +795,7 @@
 
 <!-- ═══════════════════════ FOOTER ════════════════════════════ -->
 <footer aria-label="Footer" style="background:var(--cp);padding:64px 24px 32px;">
-  <div class="max-w-7xl mx-auto">
+  <div class="max-ctr">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 pb-12" style="border-bottom:1px solid rgba(255,255,255,0.08);">
       <div class="lg:col-span-2">
         <div class="flex items-center gap-3 mb-5">
@@ -922,7 +922,7 @@
   .ts-fp { display:block;font-size:0.72rem;color:#aaa; }
 </style>
 
-<div id="ts-wrap">
+<div id="ts-wrap" style="display:none;">
   <button id="ts-btn" title="Design anpassen" aria-label="Design Switcher öffnen">🎨</button>
   <div id="ts-panel" role="dialog" aria-label="Design-Einstellungen">
     <div class="ts-header">
@@ -1020,6 +1020,31 @@
     gsap.set(el, { opacity:0, y:32 });
     gsap.to(el, { opacity:1, y:0, duration:0.8, delay:0.3 + i * 0.15, ease:'power2.out' });
   });
+
+  // ── VELOCITY SCROLL ──────────────────────────────────────────
+  (function () {
+    const track = document.querySelector('.marquee-track');
+    if (!track) return;
+    track.style.animation = 'none';
+
+    let x = 0, vel = 0, lastY = window.scrollY;
+    const BASE = 0.45, FACTOR = 0.3, DAMP = 0.88;
+
+    function halfW() { return track.scrollWidth / 2; }
+
+    gsap.ticker.add(() => {
+      const y = window.scrollY;
+      const dy = y - lastY;
+      lastY = y;
+      vel += dy * FACTOR;
+      vel *= DAMP;
+      x -= (BASE + vel);
+      const hw = halfW();
+      if (x <= -hw) x += hw;
+      if (x > 0)    x -= hw;
+      gsap.set(track, { x });
+    });
+  })();
 
 </script>
 
